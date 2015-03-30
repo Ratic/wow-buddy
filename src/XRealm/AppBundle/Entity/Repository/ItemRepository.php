@@ -14,17 +14,7 @@ class ItemRepository extends EntityRepository
         $qb = $this->createQueryBuilder('i');
         $qb->where('i.blizzId = :id');
         $qb->setParameter('id', $id);
-        if(!in_array($context, array('raid-heroic', 'raid-normal', 'raid-mythic')))
-        {
-            $context = false;
-        }
-        if(!$context)
-        {
-            $qb->andWhere('(i.context IS NULL OR i.context = :emptycontext OR i.context = :defaultcontext)');
-            $qb->setParameter('defaultcontext', 'raid-normal');
-            $qb->setParameter('emptycontext', '');
-        }
-        else
+        if($context)
         {
             $qb->andWhere('i.context = :context');
             $qb->setParameter('context', $context);
@@ -36,7 +26,7 @@ class ItemRepository extends EntityRepository
         }
         else
         {
-            return $result[0];
+            return $result;
         }
 
     }
