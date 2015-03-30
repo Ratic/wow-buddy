@@ -1,0 +1,140 @@
+/*#navigation {
+
+	display: block;
+	background: #F9F9F9;
+	box-shadow: 0 0 5px 0px rgba(0,0,0, 0.75);
+	-moz-box-shadow: 0 0 5px 0px rgba(0,0,0, 0.75);
+	-webkit-box-shadow: 0 0 5px 0px rgba(0,0,0, 0.75);
+	position: relative;
+	z-index: 2;
+
+}
+#header {
+	display: block;
+	position:relative;
+	border-bottom: 1px solid #EEEEEE;
+	z-index: 3;
+	background: #FFFFFF;
+}
+#logo {
+	padding: 20px 20px;
+	margin: 10px 0;
+	width: 195px;
+	display: block;
+        position: relative;
+}
+
+
+#pepe {
+    position:absolute;
+    right: 40px;
+    top: 9px;
+    img {
+        width: 20px;
+    }
+}
+*/
+
+#pepe {
+    display: none;
+}
+#header {
+    background: lighten($brand-info, 10%);
+    border-bottom: 4px solid $brand-primary;
+    position: relative;
+    z-index: 20;
+    .container {
+        position: relative;
+
+    }
+    min-height: 80px;
+}
+#logo {
+    padding: 8px 20px 8px 10px;
+    display: inline-block;
+    position:absolute;
+    top: 10px;
+    left: 20px;
+    z-index: 10;
+    @media (max-width: 991px)
+    {
+        margin: 0 -15px;
+        left: auto;
+        top: auto;
+        padding: 20px;
+        display: block;
+        clear: both;
+        position: relative;
+        text-align: center;
+    }
+}
+#navigation {
+    background: $brand-info;
+    height: 39px;
+    @include box-shadow(0 0 5px rgba(0,0,0,0.8));
+}
+
+#nav {
+    
+	display: block;
+	margin: 0;
+	padding: 0;
+	a {
+		display: block;
+		text-decoration: none;
+		color: #ffffff;
+		padding: 10px 30px;
+		font-size: 14px;
+        font-weight: normal;
+		@include transition(all .2s ease-in);
+		&:hover {
+			//background: #ffffff;
+			color: $brand-primary;
+		}
+	}
+	li {
+		&.bg {
+			position:absolute;
+			left: -100px;
+			top: 0;
+			bottom: 0;
+			transition: a
+		}
+		&.element {
+			float: left;
+			display: block;
+            .icon {
+                margin-right: 10px;
+                color: $brand-primary;
+                margin-left: -10px;
+            }
+		}
+        &.active {
+            a {
+                color: $brand-primary;
+            }
+
+            border-bottom: 3px solid $brand-primary;
+            margin-bottom: -3px;
+            .icon {
+                color: $brand-primary;
+            }
+        }
+	}
+}
+
+#nav-mobile {
+    margin: 10px 0px;
+    display: block;
+    border: 0;
+    width: 100%;
+    background: #F9F9F9;
+    &:active, &:focus, &:visited {
+        border: 0;
+        outline: 0;
+        color: $brand-primary;
+        option {
+            color: #333333;
+        }
+    }
+}

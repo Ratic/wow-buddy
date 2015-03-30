@@ -1,0 +1,95 @@
+<div id="user-navigation">
+    <div class="row">
+        <div class="{% if app_user_characters.selected %}col-lg-9 col-md-8 col-sm-7{% else %}col-xs-12{% endif %}">
+            <div class="user-details">
+            <span class="username">
+                {{ app.user.username }}
+
+            </span>
+            </div>
+                <ul class="user-nav">
+                    {% if app_user_characters.selected %}
+                    <li>
+                        <a href="{{ path("profile_user_show", {'identifier': app_user_characters.selected.data.name ~ '-' ~ app_user_characters.selected.data.realm.slug}) }}">
+                            <i class="icon icon-user"></i>
+                            {{ "nav.profile"|trans }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path("profile_user_show", {'identifier': app_user_characters.selected.data.name ~ '-' ~ app_user_characters.selected.data.realm.slug}) }}">
+                            <i class="icon icon-gift"></i>
+                            {{ "nav.wishlist"|trans }}
+                        </a>
+                    </li>
+                    {% endif %}
+                    <li>
+                        <a href="{{ path("profile_character_index") }}">
+                            <i class="icon icon-group"></i>
+                            {{ "nav.mycharacters"|trans }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('logout') }}">
+                            <i class="icon icon-sign-out"></i>
+                            {{ "website.logout"|trans }}
+                        </a>
+                    </li>
+                </ul>
+                    
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-5">
+            {% if app.user.blizzCharacters|length  <= 0 %}
+                <a class="no-char-error" href="{{ path('profile_character_index') }}">
+                            {{ "website.no_character"|trans }} <i class="icon icon-exclamation-circle"></i> <br />
+                </a>
+            {% else %}
+                {% if app_user_characters.selected %}
+                    
+                    <div class="char-details">
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <div class="character-thumbnail">
+                                    <a href="{{ path("profile_user_show", {'identifier': app_user_characters.selected.data.name ~ '-' ~ app_user_characters.selected.data.realm.slug}) }}">
+                                        <img width="36"src="{{ app_user_characters.selected.data.thumbnail|cacheimage }}" />
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xs-10">
+                                <div class="no-text-break">
+                                    <a class="amorylink" href="{{ path("profile_user_show", {'identifier': app_user_characters.selected.data.name ~ '-' ~ app_user_characters.selected.data.realm.slug}) }}">
+                                    {{ app_user_characters.selected.data.name }}
+                                    </a>
+                                    -
+                                    <span data-darktip="wow.realm:eu.{{ app_user_characters.selected.data.realm.slug }}({{ app.request.locale }})">{{ app_user_characters.selected.data.realm.name }}</span>
+                                </div>
+                                GS: {{ app_user_characters.selected.data.items.averageItemLevelEquipped }} ({{ app_user_characters.selected.data.items.averageItemLevel }})
+
+                            </div>
+                            <div class="swapchar dropdown pull-right">
+                                <a href="#" class="dropdown-toggle" type="button" id="charswap" data-toggle="dropdown" aria-expanded="true">
+                                    <i class="icon icon-exchange"></i>
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="drop">
+                                    {% for character in app_user_characters.all %}
+                                        {% if not character.data.isSelected %}
+                                            <li>
+                                                <a tabindex="-1" href="{{ path("profile_character_select",{'id': character.data.id}) }}">
+                                                    <img class="dropdown-icon" height="16" src="/images/role-{{ character.data.role }}-i.png" /> {{ character.data.name }} - {{ character.data.realm.name }} <small class="muted">{{ "website.gs"|trans }} {{ character.data.items.averageItemLevelEquipped }}</small>
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        
+                        
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>

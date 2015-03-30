@@ -1,0 +1,122 @@
+{% extends "XRealmAppBundle:Pages/Group:group_layout.html.twig" %}
+{% import "XRealmAppBundle:Pages/Group:activities.html.twig" as activitie_funcs %}
+
+{% block title %}
+    {{ "website.title.activities"|trans }} {{ group.name }} -
+{% endblock title %}
+
+{% if isMember or isXRealm %}
+{% form_theme form 'XRealmAppBundle:Form:fields.html.twig' %}
+{% block scripts %}
+   
+    <script type="text/javascript">
+
+        function make_clickable(text) {
+                var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+                
+                text = text.replace(exp, function(url){
+                    var target = encodeURIComponent(url);
+                    var redirect = "{{ path('url_post', {'url':'_URL_'}) }}";
+                    return '<a target="_blank" href="' + redirect.replace('_URL_',target) + '">' + url + '</a>';
+                });
+                
+               /* while(url = exp.exec(text))
+                {
+                    text.replace(url, '<a href="' + redirect.replace('%URL',encodeURI(url) + '">' + url + '</a>"'))
+                }*/
+                return text;
+        }
+        $(document).ready(function(){
+        //$('#activity_post_message').liveUrl();
+
+
+            $('.activity-post .message, .chatbubble').each(function(){
+                $(this).html(make_clickable($(this).html()));
+            });
+             $("#activity_post_isPublic").bootstrapSwitch({
+                 onText: '<i class="icon icon-globe"></i>',
+                 offText: '<i class="icon icon-lock"></i>'
+             });
+            {% if isAssist %}
+            $("#activity_post_isSticky").bootstrapSwitch({
+                 onText: '<i class="icon icon-check"></i>',
+                 offText: '&nbsp;'
+             });
+            {% endif %}
+            $('.comment-toggle').click(function(){
+                
+                $(this).parents('.activity').find('.comments').slideDown();
+                return false;
+            });
+            $('.showallcomments').click(function(){
+                $(this).hide(); 
+                $(this).parents('.comments').find('.comment').slideDown();
+                return false;
+            });
+            var theHash = window.location.hash;
+            $(theHash).parents('.activity').find('.comments').slideDown();
+
+        });
+    </script>
+    <script>
+        var wowhead_tooltips = { "colorlinks": false, "iconizelinks": false, "renamelinks": true, "hide": { "droppedby": true, "dropchance": true } }
+    </script>
+
+{% endblock scripts %}
+{% endif %}
+
+{% block group_content %}
+
+
+    <div id="activitystream">
+    {% if isMember or (isXRealm and is_granted('ROLE_USER') and app_user_characters.selected) %}
+        <div id="activitypost">
+        {{ form_start(form) }}
+        {{ form_row(form.message) }}
+        <div class="row">
+            <div class="col-sm-12">
+                {{ form_row(form.submit) }}
+             
+                {% if not isXRealm %}
+                    <div class="pull-left muted public-label">
+                        {{ "website.ispublic"|trans }}
+                    </div>
+                    <div class="pull-left public-toggle">
+
+                    {{ form_widget(form.isPublic) }}
+ 
+                    </div>
+                {% endif %}
+                {% if isAssist %}
+                    <div class="pull-left muted public-label">
+                        {{ "website.issticky"|trans }}
+                    </div>
+                    <div class="pull-left public-toggle">
+                    {{ form_widget(form.isSticky) }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        {{ form_end(form) }}
+        </div>
+        <hr />
+    {% endif %}
+    {% if activities|length <= 0 %}
+        <center>Es sind keine Beiträge vorhanden</center>
+    {% endif %}
+    {% set lastday = '-' %}
+    {% for activity in activities %}
+        {% if activity.isPublic or isMember %}
+                {% if lastday != activity.postedAt|date('Y-m-d') %}
+                    {% set lastday = activity.postedAt|date('Y-m-d') %}
+                    <div class="daycaption">
+                        {{ activity.postedAt|localizeddate('long', 'none', app.request.locale ) }}
+                    </div>
+                {% endif %}
+                
+            {{ activitie_funcs.build(activity, self, isAssist, isXRealm, is_granted('ROLE_MOD')) }}
+            
+        {% endif %}
+    {% endfor %}
+    </div>
+{% endblock group_content %}

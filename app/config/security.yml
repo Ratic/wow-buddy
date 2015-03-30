@@ -1,0 +1,39 @@
+security:
+    encoders:
+        XRealm\AppBundle\Entity\User:
+            algorithm: sha512
+
+    role_hierarchy:
+        ROLE_DEVELOPER: ROLE_ADMIN
+        ROLE_ADMIN:     ROLE_MOD
+        ROLE_MOD:       ROLE_USER
+
+    providers:
+        users:
+            entity: { class: XRealmAppBundle:User, property: username }
+
+    firewalls:
+        main_area:
+            pattern:    ^/
+            anonymous: ~
+            form_login:
+                check_path: login_check
+                login_path: login
+            logout:
+                path:   /logout
+                target: /
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        login:
+            pattern:  ^/login$
+            security: false
+
+        index:
+            pattern:  /
+            security: false
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/profile, role: IS_AUTHENTICATED_FULLY }

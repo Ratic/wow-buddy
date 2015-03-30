@@ -1,0 +1,14 @@
+{% macro item (data, content = false, placement = "right") %}
+    {% if data.context %}
+        {% set url = path("data_item_show_context", {"id": data.id, "context": data.context})%}
+    {% else %}
+        {% set url = path("data_item_show", {"id": data.id}) %}
+    {% endif %}
+<a class="data-tooltip" data-placement="{{ placement }}" href="{{ url }}" data-ajaxload="{{ url }}?tooltip=1">
+{% if content %}
+    {{ content }}
+{% else %}
+    {{ data.name }}
+{% endif %}
+</a>
+{% endmacro %}

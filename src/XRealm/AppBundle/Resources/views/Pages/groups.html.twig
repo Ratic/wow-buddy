@@ -1,0 +1,130 @@
+{% extends "XRealmAppBundle:Includes:base_layout.html.twig" %}
+
+{% block title %}{{ "website.title.groups"|trans }} - {% endblock title %}
+
+{% block content %}
+    {% if selectedCharacter %}
+    {% if not selectedCharacter.isVerified %}
+        
+    {% else %}
+        <div class="row">
+            <div class="col-sm-12">
+            {% if invites %}
+                <table class="table table-bordered group-table group-invites">
+                    <thead>
+                        <tr>
+                            <th colspan="2">
+                                {{ "headline.invites"|trans }}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for group in invites %}
+                        <tr>
+                            <td>
+                                <a href="{{ path('groups_show', {'slug': group.slug}) }}" class="grouplink">{{ group.name }}</a>
+                                <small class="muted">
+                                &bull;
+                                {{ "website.groupleader"|trans }}
+                                <a class="amorylink muted" target="_blank" href="http://eu.battle.net/wow/{{ app.request.locale }}/character/{{ group.details.leader.realm.slug }}/{{ group.details.leader.name }}/simple">
+                                    {{ group.details.leader.name }} - {{ group.details.leader.realm.name }}
+                                </a>
+                                </small>
+                            </td>
+                            <td style="text-align: right">
+                            <a href="{{ path('groups_invite', {'action': 'accept', 'slug': group.slug}) }}" class="btn btn-primary btn-xs">{{ 'website.accept'|trans }}</a>
+                            <a href="{{ path('groups_invite', {'action': 'decline', 'slug': group.slug}) }}" class="btn btn-primary btn-xs">{{ 'website.decline'|trans }}</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+                <a style="margin-bottom: 10px;" class="btn btn-xs btn-primary visible-xs" href="{{ path("groups_new") }}">{{ "website.creategroup"|trans }}</a>
+
+                <table class="table table-bordered group-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                {{ "headline.yourgroups"|trans }}
+                            </th>
+                            <th class="hidden-xs">
+                                <a class="btn btn-xs btn-primary pull-right" href="{{ path("groups_new") }}">{{ "website.creategroup"|trans }}</a>
+                                
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for group in groups %}
+                        <tr>
+                            <td>
+                                <span class="no-wrap">
+                                <a href="{{ path('groups_show', {'slug': group.slug}) }}" class="grouplink">{{ group.name }}</a>
+                                <small class="muted no-wrap"><i class="icon icon-star-o"></i> {{ group.groupRating }}</small>
+                                </span>
+                                {% set role_heal = constant('XRealm\\AppBundle\\Entity\\BlizzCharacter::ROLE_HEAL') %}
+                                {% set role_tank = constant('XRealm\\AppBundle\\Entity\\BlizzCharacter::ROLE_TANK') %}
+                                {% set role_melee = constant('XRealm\\AppBundle\\Entity\\BlizzCharacter::ROLE_MELEE') %}
+                                {% set role_range = constant('XRealm\\AppBundle\\Entity\\BlizzCharacter::ROLE_RANGE') %}
+                                <span class="roles no-wrap pull-right" style="opacity: 0.6">
+                                {% for role in [role_tank, role_heal, role_melee, role_range] %}
+                                    <span class="role">
+                                        <span class="count">{{ attribute(group.details.role, 'role' ~ role) }}</span>
+                                        <img height="14" src="/images/role-{{ role }}-i.png" />
+                                        {% if not loop.last %}&bull;{% endif %}
+                                    </span>
+                                {% endfor %}
+                                </span>
+                            </td>
+                            <td class="hidden-xs">
+                            <span class="hidden-xs">
+                            {{ "website.groupleader"|trans }}
+                            <a class="amorylink" href="{{ path("profile_user_show", {'identifier': group.details.leader.name ~ '-' ~ group.details.leader.realm.slug}) }}">
+                                {{ group.details.leader.name }} - {{ group.details.leader.realm.name }}
+                            </a>
+                            </span>
+                            {% if not group.isPublic %}
+                                <small class="pull-right"><span class="hidden-xs">{{ "website.private"|trans }} </span><i class="icon icon-lock"></i></small>
+                            {% else %}
+                                <small class="pull-right"><span class="hidden-xs">{{ "website.public"|trans }} </span><i class="icon icon-globe"></i></small>
+                            {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+   {% endif %}
+    {% endif %}
+    <div class="row">
+        <div class="col-sm-6">
+            <table class="table table-bordered group-table">
+                <thead>
+                    <tr>
+                        <th colspan="3">
+                            Top 10
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for group in top10 if group.groupRating > 0 %}
+                        <tr>
+                            <td>
+                                {{ loop.index }}.
+                            </td>
+                            <td>
+                                <i class="icon icon-star-o"></i> {{ group.groupRating }}
+                            </td>
+                            <td>
+                                <a href="{{ path('groups_show', {'slug': group.slug}) }}" class="grouplink">
+                                {{ group.name }}
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}

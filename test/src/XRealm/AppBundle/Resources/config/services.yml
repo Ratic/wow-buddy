@@ -1,0 +1,9 @@
+services:
+    xrealm.command.test:
+        class: XRealm\AppBundle\Console\TestCommand
+        tags:
+            -  { name: console.command }
+
+    blizz_api:
+        class: XRealm\Component\BlizzApi\BlizzApi
+        arguments: ["@api_caller"]

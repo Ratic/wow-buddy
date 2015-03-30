@@ -1,0 +1,217 @@
+{% extends "XRealmAppBundle:Includes:base_layout.html.twig" %}
+{% form_theme form 'XRealmAppBundle:Form:fields.html.twig' %}
+
+{% block title %}{{ "website.title.characters"|trans }} - {% endblock title %}
+
+{% block scripts %}
+
+{% endblock scripts %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table table-bordered character-list-table">
+            <thead>
+                <tr>
+                    <th>Charakter</th>
+                    <th class="hidden-xs">{{ "website.level"|trans }} </th>
+                    <th>Realm</th>
+                    <th class="hidden-xs">Rolle</th>
+                    <th>Optionen</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for character in app.user.blizzCharacters %}
+                <tr>
+                    <td>
+                        <a class="hidden-xs character-thumbnail amorylink" href="{{ path("profile_user_show", {'identifier': character.name ~ '-' ~ character.realm.slug}) }}">
+                            <img width="32" src="{{ character.thumbnail|cacheimage }}" />
+                        </a>
+                        <a class="charclass" href="{{ path("profile_user_show", {'identifier': character.name ~ '-' ~ character.realm.slug}) }}">
+                           {{ character.name }}
+                        </a>
+                           <span class="label class-{{ character.class }}">
+                               {{ ("website.class." ~ character.class)|trans }}
+                           </span>
+                        {% if not character.isVerified %}
+                            <span class="label label-danger pull-right">{{ "website.notverified"|trans }}</span>
+                        {% endif %}
+                    </td>
+                    <td class="hidden-xs">
+                        {{ character.level }}
+                    </td>
+                    <td>
+                        {{ character.realm.name }}
+                    </td>
+                    <td class="hidden-xs">
+                        <span{% if character.availableRoles|length > 1 %} data-toggle="modal" data-target="#change_role_{{ character.id }}"{% endif %} class="characterole{% if character.availableRoles|length > 1 %} clickable{% endif %}">
+                            <img height="20" src="/images/role-{{ character.role }}-i.png" /> {{ ("role." ~ character.role)|trans }} {% if character.availableRoles|length > 1 %}<i class="icon icon-pencil pull-right"></i>{% endif %}
+                        </span>
+                        <div class="modal fade" id="change_role_{{ character.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="btn btn-link  pull-right" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="icon icon-times"></i></span></button>
+                                        <h4 class="modal-title" id="myModalLabel"><i class="icon icon-exchange"></i> {{ "headline.changerole"|trans }}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        {% for role in character.availableRoles %}
+                                            {% if role != character.role %}
+                                                <a href="{{ path("profile_character_changerole", {'id': character.id, 'role': role}) }}" class="btn btn-info"><img height="20" src="/images/role-{{ role }}.png" /> {{ ("role." ~ role)|trans }}</a>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td>
+                        {% if not character.isSelected %}
+                            <a class="btn btn-link action muted" href="{{ path("profile_character_select",{'id': character.id}) }}">
+                                <i class="icon icon-check-circle"></i>
+                                {{ "website.select"|trans }}
+                            </a>
+                        {% endif %}
+                            <a class="btn btn-link action muted" href="{{ path("profile_character_update") }}">
+                                <i class="icon icon-refresh"></i>
+                                {{ "website.update"|trans }}
+                            </a>
+                        {% if not character.isVerified %}
+                            <a class="btn btn-link" href="#" data-toggle="modal" data-target="#change_verify_{{ character.id }}">
+                                <i class="icon icon-plus-square"></i>
+                                {{ "website.verify"|trans }}
+                            </a>
+                            <div class="modal fade" id="change_verify_{{ character.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="btn btn-link  pull-right" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="icon icon-times"></i></span></button>
+                                            <h4 class="modal-title" id="myModalLabel"><i class="icon icon-check-square"></i> {{ "website.verify"|trans }}</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            {{ "error.pleaseverify"|trans|raw }}
+                                            <hr />
+                                            <ul>
+                                                {% for item in character.verifyItems %}
+                                                    <li>{{ ("item." ~ item)|trans }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                            <hr />
+                                            <a class="btn btn-primary action pull-right" href="{{ path("profile_character_verify") }}">
+                                                {{ "website.verify"|trans }}
+                                            </a>
+                                            <div style="clear:both"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <a class="btn btn-link action muted" href="{{ path("profile_character_delete",{'id': character.id}) }}" onclick="return confirm('{{ "website.areyousure"|trans }}');">
+                            <i class="icon icon-trash-o"></i>
+                            {{ "website.delete"|trans }}
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+            {#
+        {% for character in app.user.blizzCharacters %}
+            <div class="col-sm-12 panel panel-default character">
+                <div class="character-thumbnail">
+                    
+                </div>
+                <h2 class="banner{% if character.isSelected %} banner-success{% endif %}">
+                    
+                    <a class="btn btn-info pull-right" target="_blank" href="http://eu.battle.net/wow/{{ app.request.locale }}/character/{{ character.realm.slug }}/{{ character.name }}/simple">{{ "website.amorylink"|trans }}</a>
+                    <a class="btn btn-info pull-right" style="margin-right: 10px" href="{{ path("profile_user_show", {'identifier': character.name ~ '-' ~ character.realm.slug}) }}">
+                        {{ "website.profile"|trans }}
+                    </a>
+                    
+                </h2>
+                
+
+                
+                      
+                <hr />
+                <div class="row">
+                    <div class="col-sm-4 col-lg-2 character-actions">
+
+
+                    </div>
+                    <div class="col-sm-8 col-lg-10">
+                        {% if not character.isVerified %}
+                            <div class="notification notification-info with-icon">
+                                <div class="notification-icon"><i class="icon icon-info-circle"></i></div>
+                                {{ "error.pleaseverify"|trans|raw }}
+                                <hr />
+                                <ul>
+                                    {% for item in character.verifyItems %}
+                                        <li>{{ ("item." ~ item)|trans }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                        <div class="table-chartable">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2" style="display:none" class="detail-stats">
+                                            {{ "website.equip"|trans }}
+                                        </th>
+                                        <th>{{ "website.itemscore"|trans }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="display:none" class="detail-stats">
+                                    
+                                    {% for key, item in character.items %}
+
+                                       {% if key != 'averageItemLevel' and key != 'averageItemLevelEquipped' %}
+                                           <tr>
+                                               <td>
+                                                   <strong>{{ ("item." ~ key)|trans }}</strong>
+                                               </td>
+                                               <td>
+                                                 <a rel="item={{ item.id }}" class="quality-{{ item.quality }}" target="_blank" href="http://eu.battle.net/wow/{{ app.request.locale }}/item/{{ item.id }}">{{ item.name }}</a>
+                                               </td>
+                                               <td>
+                                                   {{ item.itemLevel }}
+                                               </td>
+                                           </tr>
+                                        {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="2" style="display:none" class="detail-stats">
+                                            <strong>{{ "website.sum"|trans }}</strong>
+                                        </td>
+                                        <td>
+                                            {{ character.items.averageItemLevelEquipped }} ({{ character.items.averageItemLevel }} {{ "website.inbag"|trans }})
+                                        </td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <a href="#" class="showdetails">{{ "website.showdetails"|trans }} <i class="icon icon-angle-down"></i></a>
+                                            <a href="#" style="display:none" class="hidedetails">{{ "website.hidedetails"|trans }} <i class="icon icon-angle-up"></i></a>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %} #}
+	<div class="col-sm-12 panel panel-info">
+            <h2 class="banner">{{ "headline.add_character"|trans }}</h2>
+            {{ form(form) }}
+	</div>
+</div>
+{% endblock content %}

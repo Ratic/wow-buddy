@@ -1,0 +1,23 @@
+x_realm_app_base:
+    resource: "@XRealmAppBundle/Resources/config/routing/base.yml"
+    prefix:   /
+
+x_realm_app_profile:
+    resource: "@XRealmAppBundle/Resources/config/routing/profile.yml"
+    prefix:   /profile
+    
+x_realm_app_groups:
+    resource: "@XRealmAppBundle/Resources/config/routing/groups.yml"
+    prefix:   /groups
+
+x_realm_app_calendar:
+    resource: "@XRealmAppBundle/Resources/config/routing/calendar.yml"
+    prefix:   /calendar
+
+x_realm_app_api:
+    resource: "@XRealmAppBundle/Resources/config/routing/api.yml"
+    prefix:   /api
+
+x_realm_app_data:
+    resource: "@XRealmAppBundle/Resources/config/routing/data.yml"
+    prefix:   /data

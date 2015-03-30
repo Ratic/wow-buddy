@@ -1,0 +1,110 @@
+.calendar-headline {
+    margin: 0;
+}
+.event-calendar {
+    &.table{
+        > tbody > tr > td {
+            border: 1px solid #cccccc;
+            padding: 0;
+            width: 14.29%;
+        }
+        table-layout: fixed;
+    }
+    .calendar-field {
+        padding: 0;
+        min-height: 160px;
+        
+        &.inactive {
+            .event, .daycaption {
+                opacity: 0.4;
+            }
+            background: #f5f5f5;
+        }
+        &.today {
+            border: 3px solid lighten($brand-info, 20%);
+            background: lighten($brand-info, 80%);
+            .daycaption {
+                padding-top: 7px;
+            }
+        }
+        .daycaption {
+            font-weight: bold;
+            padding: 10px;
+        }
+    }
+    .event {
+        a{
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #333333;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+        max-width: 100%;
+        overflow: hidden;
+        margin: 2px;
+        background: #f5f5f5;
+        border: 1px solid #EEEEEE;
+        padding: 5px 10px;
+        &.status-1 {
+            border: 1px solid $brand-success;
+            background: lighten($brand-success, 40%);
+        }
+        &.status-2 {
+            border: 1px solid $brand-danger;
+            background: lighten($brand-danger, 40%);
+        }
+
+        .event-time {
+            display: inline;
+        }
+        .event-title {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: .9em;
+        }
+        .event-group {
+            a {
+                display: block;
+            }
+        }
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .event-group {
+        font-size: .8em;
+        font-weight: bold;
+        a {
+            color: #333333;
+        }
+    }
+    .event-time {
+        font-size: .8em;
+        color: #777777;
+    }
+}
+@media  (max-width: 768px) {
+    .event-calendar {
+        .calendar-field {
+            min-height: 16px;
+            
+        }
+
+
+        &.table{
+            > thead {
+                display: none;
+            }
+            > tbody > tr > td {
+                border-width: 0 0 1px 0;
+                display: block;
+                width: auto;
+                &.inactive {
+                    display: none;
+                }
+            }
+        }
+    }
+}

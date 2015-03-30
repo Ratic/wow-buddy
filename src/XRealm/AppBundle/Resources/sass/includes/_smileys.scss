@@ -1,0 +1,52 @@
+@font-face {
+  font-family: 'smileys';
+  src: url('/fonts/smileys.eot?62372600');
+  src: url('/fonts/smileys.eot?62372600#iefix') format('embedded-opentype'),
+       url('/fonts/smileys.woff?62372600') format('woff'),
+       url('/fonts/smileys.ttf?62372600') format('truetype'),
+       url('/fonts/smileys.svg?62372600#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+ [class^="smiley-"], [class*=" smiley-"] {
+     &:before {
+        font-family: "smileys";
+        font-style: normal;
+        font-weight: normal;
+        speak: none;
+        display: inline-block;
+        text-decoration: inherit;
+
+        margin-right: .2em;
+        text-align: center;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1em;
+        margin-left: .2em;
+    }
+}
+.smiley-lightbulb:before { content: "\e800"; } 
+
+.smiley-crown:before { content: '\e803'; }
+.smiley-bomb:before { content: '\e804'; } 
+.smiley-heart:before { content: '\e807'; } 
+.smiley-angellist:before { content: '\e808'; }
+.smiley-happy:before { content: '\e85f'; }
+.smiley-wink:before { content: '\e861'; }
+.smiley-unhappy:before { content: '\e862'; }
+.smiley-sleep:before { content: '\e863'; } 
+.smiley-thumbsup:before { content: '\e864'; } 
+.smiley-devil:before { content: '\e865'; } 
+.smiley-surprised:before { content: '\e866'; }
+.smiley-tongue:before { content: '\e867'; } 
+.smiley-coffee:before { content: '\e868'; } 
+.smiley-sunglasses:before { content: '\e869'; } 
+.smiley-displeased:before { content: '\e86a'; }
+.smiley-beer:before { content: '\e86b'; } 
+.smiley-grin:before { content: '\e86c'; } 
+.smiley-angry:before { content: '\e86d'; } 
+.smiley-saint:before { content: '\e86e'; } 
+.smiley-cry:before { content: '\e86f'; }
+.smiley-shoot:before { content: '\e870'; } 
+.smiley-squint:before { content: '\e871'; }
+.smiley-laugh:before { content: '\e872'; }

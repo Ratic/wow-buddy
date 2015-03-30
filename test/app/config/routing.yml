@@ -1,0 +1,11 @@
+x_realm_app_base:
+    resource: "@XRealmAppBundle/Resources/config/routing/base.yml"
+    prefix:   /
+
+x_realm_app_profile:
+    resource: "@XRealmAppBundle/Resources/config/routing/profile.yml"
+    prefix:   /profile
+
+x_realm_user:
+    resource: "@XRealmUserBundle/Resources/config/routing.yml"
+    prefix:   /

@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0;" />
+        <link rel="stylesheet" href="/styles/styles.css">
+        <link href='http://fonts.googleapis.com/css?family=Roboto:700,400' rel='stylesheet' type='text/css'>
+        <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+        <script src="/js/bootstrap-switch.js"></script>
+        <script src="/js/jquery-timeago/jquery.timeago.js"></script>
+        <link rel="shortcut icon" href="/favicon.ico?v=2" type="image/x-icon" />
+        <script src="/js/jquery-timeago/locales/jquery.timeago.{{ app.request.locale }}.js"></script>
+        <title>{% block title %}{% endblock title %}{{ "website.title.base"|trans }}</title>
+        {% block head %}
+        {% endblock head %}
+    </head>
+    <body>
+        <div id="page">
+            {% block page %}
+            <div id="header">
+                <div class="container">
+                    <div id="notifications">
+                        {% for type, flashMessage in app.session.flashbag %}
+                            <div class="notification notification-{{ type }}">
+                                {{ flashMessage.0 }} <a href="#" class="notification-close"><i class="icon icon-times"></i></a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div id="logo">
+                        <a href="{{ path("index") }}"><img src="/images/logo-w.png" /></a>
+                    </div>
+                    <div id="user">
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            {% include "XRealmAppBundle:Includes:user_navigation.html.twig" %}
+
+                        {% else %}
+                            <a id="loginbtn" href="{{ path("login") }}" class="btn btn-info">{{ "website.login_register"|trans }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div id="navigation">
+                <div class="container">
+                    {% include "XRealmAppBundle:Includes:navigation.html.twig" %}
+                </div>
+            </div>
+            <div id="content">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% if app_user_characters.selected %}
+                        {% if not app_user_characters.selected.data.isVerified and app.request.attributes.get('_route') != 'profile_character_index' %}
+                            <div class="container">
+                                <div class="notification notification-danger">
+                                {{ "error.notVerified"|trans({"%path%": path("profile_character_index")})|raw }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+
+                {% block content_container %}
+                <div class="container">
+
+                    {% block content %}
+                    {% endblock content %}
+                </div>
+                {% endblock %}
+            </div>
+            <div id="footer">
+                <div class="container">
+                    {% include "XRealmAppBundle:Includes:footer_navigation.html.twig" %}
+                </div>
+            </div>
+            {% endblock page %}
+        </div>
+        {#
+        <script type="text/javascript" src="/js/power.js"></script>
+        <script>var wowhead_tooltips = { "locale": "dede", "colorlinks": false, "iconizelinks": false, "renamelinks": false, "hide": { "droppedby": true, "dropchance": true } }</script>
+        #}
+        <script type="text/javascript">
+
+            $.fn.bootstrapSwitch.defaults.size = 'small';
+            $(document).ready(function() {
+                $('.data-tooltip').each(function(){
+                    var e= $(this);
+                    var timeout;
+                    $(this).hover(function(){
+                        timeout = setTimeout(function(){
+                            $(this).stop();
+                            $(this).unbind('hover');
+                            $(this).unbind('mouseenter mouseleave');
+                            $.get(e.data('ajaxload'),function(d){
+                                var content = d;
+                                e.popover({
+                                    trigger: 'manual',
+                                    content: d,
+                                    html: true,
+                                    title: false
+                                }).popover('show');
+                                bindPopoverTrigger(e);
+
+                            }).fail(function() {
+                                 e.popover({
+                                    trigger: 'manual',
+                                    content: '<i class="icon icon-exclamation-circle"></i> {{ "error.item_notloadable"|trans }}',
+                                    html: true,
+                                    title: false
+                                }).popover('show');
+                                bindPopoverTrigger(e);
+                            });
+                        }, 400);
+                    }, function() {
+                        clearTimeout(timeout);
+                    });
+
+                });
+                function bindPopoverTrigger(e)
+                {
+                    var timeout;
+                   e.unbind('mouseenter mouseleave');
+                   e.hover(function(){
+                       $('.popover').hide();
+                       clearTimeout(timeout);
+                       timeout = setTimeout(function(){
+                           clearTimeout(timeout);
+                           $('.popover').hide();
+                           if($('.data-tooltip:hover').length)
+                            {
+                                e.popover('show');
+                            }
+                       },400)
+                       
+                   }, function(){
+                       clearTimeout(timeout);
+                       e.popover('hide');
+                       if(!$('.data-tooltip:hover').length)
+                        {
+                            $('.popover').hide();
+                        }
+                   });
+                                }
+                $(".timeago").timeago();
+                $('[data-toggle="tooltip"]').tooltip()
+                $("#nav-mobile").change(function(){
+                    if ($(this).val()!='') {
+                        window.location.href=$(this).val();
+                    }
+                });
+                $('.notification-close').click(function(){
+                    $(this).parent('.notification').remove();
+                    return false;
+                });
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% if app.user.username == 'Kiki' or app.user.username == 'Tobi' or app.user.username == 'numv' %}
+                            $('.notification-rainbow .notification-close').hover(function(){
+                                $window = $(this);
+                                $.setTimeout(function(){
+                                    $window.parent('.notification').css({
+                                    top: Math.round(Math.random() * 300) + 'px',
+                                    left: Math.round(Math.random() * 300) - 150 + 'px'
+                                }, 100)});
+                                
+                            });
+                    {% endif %}
+                {% endif %}
+                function scrollspy()
+                {
+                    var scrollTop = $(window).scrollTop();
+                    if(scrollTop > 100)
+                    {
+                        $('#navigation').css({
+                            'position': 'fixed',
+                            'top': '0',
+                            'left': '0',
+                            'right': '0',
+                            'z-index': '199',
+                        });
+                        $('#header').css({
+                            'margin-bottom': '45px',
+                            'z-index': '200',
+                        });
+                        $('#notifications').stop().animate({
+                            'top': '60px',
+                        }, 200);
+                    }
+                    else
+                    {
+                        $('#navigation').css({
+                            'position': 'relative',
+                            'top': 'auto',
+                            'left': 'auto',
+                            'right': 'auto'
+                        });
+                        $('#header').css({
+                            'margin-bottom': '0px'
+                        });
+                        $('#notifications').stop().animate({
+                            'top': '5px',
+                        }, 200);
+                    }
+                }
+                $(window).scroll(function(){
+                    scrollspy();
+                });
+                scrollspy();
+            });
+        </script>
+        {% block scripts %}
+        {% endblock scripts %}
+    </body>
+</html>

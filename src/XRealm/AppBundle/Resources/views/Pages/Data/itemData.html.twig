@@ -1,0 +1,134 @@
+<div class="item-box">
+    
+    
+    <div class="row">
+        {% if not tooltip %}
+            <div class="item-quality-{{ item.quality }} col-xs-8 col-sm-12">
+                <h1>{{ item.getName(app.request.locale) }}</h1>
+            </div>
+        {% endif %}
+        {% if not tooltip %}
+        <div class="{% if tooltip %}col-sm-3{% else %}col-lg-1 col-md-1 col-sm-2 col-xs-4{% endif %}">
+            <div class="item-quality-{{ item.quality }}-image">
+                <img src="{{ ("http://us.media.blizzard.com/wow/icons/56/" ~ item.icon ~ ".jpg")|cacheimage }}" />
+            </div>
+        </div>
+        <div class="visible-xs" style="clear:both;">
+            <br />
+        </div>
+        {% else %}
+            <div class="item-quality-{{ item.quality }}-image tooltip-image">
+                <img src="{{ ("http://us.media.blizzard.com/wow/icons/56/" ~ item.icon ~ ".jpg")|cacheimage }}" />
+            </div>
+        {% endif %}
+        <div class="{% if tooltip %}col-sm-12{% else %}col-sm-5 col-lg-4 col-xs-12 content-box{% endif %}">
+            {% if tooltip %}
+                <div class="item-quality-{{ item.quality }}">
+                    <strong class="item-title">{{ item.getName(app.request.locale) }}</strong>
+                    {% if item.getName(app.request.locale) != item.getName() %}
+                        <small class="muted"><i class="icon icon-globe"></i> {{ item.getName() }}</small>
+                    {% endif %}
+                </div>
+            {% endif %}
+            {% if item.nameDescription %}
+            <p class="description-{{ item.nameDescriptionColor }}">
+                {{ item.nameDescription }}
+            </p>
+            {% endif %}
+            {% if item.itemLevel %}
+            <p class="ilevel">
+                {{ "data.itemlevel"|trans }} {{ item.itemLevel }}
+            </p>
+            {% endif %}
+            {% if item.description %}
+            <p class="description">
+                <i>{{ item.getDescription(app.request.locale) }}</i>
+            </p>
+            {% endif %}
+
+            <p>
+                {% if item.itemBind %}
+                    {{ "data.bop"|trans }}
+                {% endif %}
+            </p>
+            {{ ("data.inventorytype." ~ item.inventoryType)|trans }}
+            {% if item.armor %}
+                <p>
+                    <ul class="statlist">
+                        <li>{{ item.armor }} {{ "data.armor"|trans }}</li>
+                    </ul>
+                </p>
+            {% endif %}
+            
+            <p>
+                <ul class="statlist">
+                    {% for row in item.bonusStats %}
+                        <li{% if row.stat > 7 and row.stat != 73 %} class="active"{% endif %}>+ {{ row.amount }} {{ ("data.stat." ~ row.stat)|trans }}</li>
+                    {% endfor %}
+                </ul>
+            </p>
+            {% if not tooltip %}
+                {% if item.bonusSummary.bonusChances %}
+                    {% for chance in item.bonusSummary.bonusChances %}
+                        <p class="spacing">
+                            {{ ("data.chancetype." ~ chance.chanceType|lower)|trans }}
+                        </p>
+                        <ul>
+                            {% for row in chance.stats %}
+                                <li>{% if row.statId != 64 %}+ {{ row.delta }}{% endif %} {{ ("data.stat." ~ row.statId)|trans }}</li>
+                            {% endfor %}
+                            {% for row in chance.sockets %}
+                                <li><span class="socket socket-{{ row.socketType|lower }}"></span> {{ ("data.socket." ~ row.socketType|lower)|trans }}</li>
+                            {% endfor %}
+                        </ul>
+
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+            {% if item.sellPrice %}
+            <p class="spacing">
+                {{ "data.sellprice"|trans }}: {{ item.sellPrice|buyprice|raw }}
+            </p>
+            {% endif %}
+
+            {#
+
+    private $disenchantingSkillRank;
+    private $stackable;
+    private $allowableClasses;
+    private $bonusStats;
+    private $itemSpells;
+    private $buyPrice;
+    private $itemClass;
+    private $itemSubClass;
+    private $containerSlots;
+    private $inventoryType;
+    private $equippable;
+    private $itemLevel;
+    private $itemSet;
+    private $maxCount;
+    private $maxDurability;
+    private $minFactionId;
+    private $minReputation;
+    private $quality;
+    private $sellPrice;
+    private $requiredSkill;
+    private $requiredLevel;
+    private $requiredSkillRank;
+    private $itemSource;
+    private $baseArmor;
+    private $hasSockets;
+    private $isAuctionable;
+    private $armor;
+    private $displayInfoId;
+
+    private $upgradeable;
+    private $heroicTooltip;
+    private $context;
+    private $bonusLists;
+    private $availableContexts;
+    private $bonusSummary;
+    #}
+        </div>
+    </div>
+</div>

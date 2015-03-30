@@ -1,0 +1,61 @@
+{% extends "XRealmAppBundle:Includes:base_layout.html.twig" %}
+
+{% block content %}
+    <center>
+        <h1>Raids einfach Planen! <small class="muted">#BLIZZARDEXTEND</small></h1>
+    </center>
+    <hr />
+
+    
+    <div class="row">
+        <div class="col-sm-4">
+            <div class=" panel panel-info">
+                <h3 class="banner">xRealm mal einfach. <i class="icon icon-calendar pull-right"></i></h3>
+                    <div class="static-height">
+                    <p>
+                        Ihr habt über das LFG-Tool inzwischen viele neue Freunde gefunden oder sogar eine ganze Gruppe, aber ihr wisst nicht wie ihr sie organisieren sollt, weil Blizzard leider nach wie vor keinen Serverübergreifenden Kalenderinvite anbietet?
+                    </p>
+                    <p>
+                        Dann seid ihr bei uns genau richtig, denn wir bieten euch eine einfache und komfotable Möglichkeit eure xRealm-Gruppen zu organisieren und sie zu Raidevents einzuladen. 
+                        Einfach auf der Homepage registrieren, die gewünschten Charaktere hinzufügen und schon kann eure neue xRealm-Gruppe eröffnet und verwaltet werden.
+                    </p>
+                    </div>
+                    <!--a href="#" class="btn btn-primary">Jetzt Starten</a-->
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class=" panel panel-info">
+                <h3 class="banner"> TEXT <i class="icon icon-exchange pull-right"></i></h3>
+                <div class="static-height">
+                    <p>Ein Text ist hier unerlässlig, deswegen verfasst der Texter hier jetzt einen Text, auch wenn der Inhalt des Textes einfach sinnlos ist.</p>
+                    
+                </div>
+                
+                <!--a href="#" class="btn btn-primary">Raidgruppen</a-->
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class=" panel panel-info">
+                <h3 class="banner">Immer Up- to date <i class="icon icon-download pull-right"></i></h3>
+                <div class="static-height">
+                    
+                <p>
+                    Mit unserem Addon bleiben Sie auch im Spiel immer auf dem neusten Stand der Raidereignisse.
+                </p>
+                </div>
+                <!--a href="#" class="btn btn-primary">Zur Downloadseite</a-->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class=" panel panel-default">
+                <h3 class="banner">Auch ein Alpha ist eine Alpha</h3>
+                <p>
+                    Wie ihr seht, ist diese Homepage noch im Aufbau und auch das Addon befindet sich noch in der Entwicklungs- und Testphase. Für eure Anregungen und eure Kritik sind wir immer offen und versuchen sie im Rahmen unserer Möglichkeiten zu berücksichtigen und umzusetzen.
+                </p>
+                <a href="{{ path('supportus') }}" class="btn btn-primary">Kontaktiere uns</a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

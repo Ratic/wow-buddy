@@ -1,0 +1,446 @@
+{% extends "XRealmAppBundle:Includes:base_layout.html.twig" %}
+{% import "XRealmAppBundle:Includes:macro_tooltip.html.twig" as tooltipbuilder %}
+
+{% block title %}{{ character.name }} - {{ character.realm.name }} - {% endblock title %}
+
+{% block scripts %}
+<script type="text/javascript" src="/js/jquery.circliful.min.js"></script>
+<script>
+$( document ).ready(function() {
+        $('.statcircle').circliful();
+    });
+</script>
+{% endblock scripts %}
+
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="profile-charinfo">
+                <h3>{{ character.name }}{% if character.level != 100 %} <small>lvl {{ character.level }}</small>{% endif %}</h3>
+                <h4 class="muted">{{ character.realm.name }}</h4>
+
+                <div class="character-thumbnail">
+                    <img src="{{ character.thumbnail|cacheimage(3600) }}" />
+                </div>
+            
+                <hr />
+                <a class="btn btn-link profileaction" target="_blank" href="http://eu.battle.net/wow/{{ app.request.locale }}/character/{{ character.realm.slug }}/{{ character.name }}/simple">
+                    Arsenal
+                    <i class="icon icon-external-link"></i>
+                </a>
+                <br />
+                <a class="btn btn-link profileaction" target="_blank" href="http://www.askmrrobot.com/wow/player/eu/{{ character.realm.slug }}/{{ character.name }}">
+                    Ask Mr. Robot
+                    <i class="icon icon-external-link"></i>
+                </a>
+                {% if self or is_granted('ROLE_MOD') %}
+                <br /><a href="{{ path("profile_character_updatesingle", {'id': character.id}) }}" class="btn btn-link profileaction">
+                    Update
+                </a>
+                {% endif %}
+            </div>
+            <hr />
+            <div class="profile-charinfo">
+                <h3>Gruppen</h3>
+            </div>
+            <table class="table table-condensed">
+                <tbody>
+            {% for member in groups %}
+                <tr>
+                    <td>
+                        <a href="{{ path('groups_show', {'slug': member.group.slug}) }}" class="grouplink">{{ member.group.name }}</a>
+                    </td>
+                    <td>
+                        <i class="icon icon-star-o"></i> {{ member.group.groupRating }}
+                    </td>
+                </tr>
+            {% endfor %}
+                </tbody>
+            </table>
+            {% if userCharacters|length > 0 %}
+            <hr />
+            <h3>Charaktere</h3>
+                <table class="table table-condensed">
+                    <tbody>
+                    {% for userCharacter in userCharacters %}
+                        <tr>
+                            <td>
+                                <a class="amorylink" href="{{ path("profile_user_show", {'identifier': userCharacter.name ~ '-' ~ userCharacter.realm.slug}) }}">
+                                {{ userCharacter.name }} - {{ userCharacter.realm.name }}
+                                </a>
+                                
+                            </td>
+                            <td>
+                                <small class="no-wrap muted">Level {{ userCharacter.level }}</small>
+                                <span class="label class-{{ userCharacter.class }}">
+                                    {{ ("website.class." ~ userCharacter.class)|trans }}
+                                </span>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+        <div class="col-sm-9">
+            <h3>Ausrüstung</h3>
+            <h4>{{ "website.itemscore"|trans }} {{ character.items.averageItemLevelEquipped }} <small class="muted">{{ character.items.averageItemLevel }} {{ "website.inbag"|trans }}</small></h4>
+            <table class="table table-condensed table-striped table-itembuild" style="margin-bottom: 0">
+                <tbody>
+                    <tr>
+                        {% set slots = ["head","hands", "neck", "waist", "shoulder", "legs", "back", "feet", "chest", "finger1", "shirt", "finger2", "tabard", "trinket1","wrist", "trinket2", "mainHand", "offHand"] %}
+                        {% for slot in slots %}
+                            {% if loop.index % 2 == 1 and loop.index > 2%}
+                                </tr>
+                                <tr>
+                            {% endif %}
+
+                                
+                                {% if attribute(character.items, slot) is defined %}
+                                    {% set item = attribute(character.items, slot) %}
+                                    {% if loop.index % 2 == 0 %}
+
+                                    <td width="1000" class="iteminfo-right">
+                                        {% set content %}
+                                        <div class="muted">
+                                            {{ ("item." ~ slot)|trans }}
+                                        </div>
+                                        <div class="item">
+                                            <span class="quality-{{ item.quality }}">{{ item.name }}</span>
+                                        </div>
+                                        <div class="iteminfo">
+                                            <span class="text-success">{{ item.itemLevel }}</span>{% if item.context %}<small class="muted"> - {{ ("item-context." ~ item.context)|trans }}</small>{% endif %}
+                                        </div>
+                                       {% endset %}
+                                       {{ tooltipbuilder.item(item, content, "left") }}
+                                    </td>
+                                    <td width="48" class="itemframe right">
+                                        {% set content %}
+                                           <div class="item-round quality-{{ item.quality }}">
+                                                <img width="48" src="{{ ("http://us.media.blizzard.com/wow/icons/56/" ~ item.icon ~ ".jpg")|cacheimage }}" />
+                                            </div>
+                                        {% endset %}
+                                        {{ tooltipbuilder.item(item, content, "left") }}
+                                    </td>
+                                    {% else %}
+                                    <td width="48" class="itemframe">
+                                        {% set content %}
+                                           <div class="item-round quality-{{ item.quality }}">
+                                                <img width="48" src="{{ ("http://us.media.blizzard.com/wow/icons/56/" ~ item.icon ~ ".jpg")|cacheimage }}" />
+                                            </div>
+                                        {% endset %}
+                                        {{ tooltipbuilder.item(item, content, "right") }}
+                                    </td>
+                                    <td width="1000" class="iteminfo-left">
+                                        {% set content %}
+                                        <div class="muted">
+                                            {{ ("item." ~ slot)|trans }}
+                                        </div>
+                                        <div class="item">
+                                            <span class="quality-{{ item.quality }}">{{ item.name }}</span>
+                                        </div>
+                                        <div class="iteminfo">
+                                            <span class="text-success">{{ item.itemLevel }}</span>{% if item.context %}<small class="muted"> - {{ ("item-context." ~ item.context)|trans }}</small>{% endif %}
+                                        </div>
+                                       {% endset %}
+                                       {{ tooltipbuilder.item(item, content, "right") }}
+                                    </td>
+                                    {% endif %}
+                                {% else %}
+                                    {% if loop.index % 2 == 0 %}
+                                    <td>
+                                        <div class="muted">
+                                            {{ ("item." ~ slot)|trans }}
+                                        </div>
+                                        {{ "website.empty"|trans }}
+                                    </td>
+                                    <td class="itemframe">
+                                        <div class="item-round">
+                                            <div class="item-placeholder">
+
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    {% else %}
+                                    <td class="itemframe">
+                                        <div class="item-round">
+                                            <div class="item-placeholder">
+                                                
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                    <div class="muted">
+                                        {{ ("item." ~ slot)|trans }}
+                                    </div>
+                                    {{ "website.empty"|trans }}
+                                    </td>
+                                    {% endif %}
+                                {% endif %}
+                            </td>
+                            {% if loop.index == 1 %}
+                                <td colspan="2" rowspan="9"width="180" class="visible-lg" style="padding: 5px 20px; min-width: 200px;">
+                                    {% for stat in mainstats %}
+                                        {% set amount = attribute(character.stats, stat) %}
+    
+                                        <h5 class="muted" style="margin:5px 0 0 0">{{ ('game.stat.' ~ stat)|trans }}</h5>
+                                        <font size="3">{{ amount }}</font>
+                                        
+                                        
+                                    {% endfor %}
+                                    <hr style="margin:10px 0 0" />
+                                    {% for stat in substats %}
+                                        {% set amount = attribute(character.stats, stat ~'Rating') %}
+                                        {% set percent = attribute(character.stats, stat) %}
+                                    <center>
+                                    <h5 class="muted" style="margin:5px 0 0 0">{{ ('game.stat.' ~ stat)|trans }}</h5>
+                                    
+                                    <div class="statcircle"
+                                         data-dimension="64"
+                                         data-text="{{ amount|round(0) }}"
+                                         data-info="{{ percent|round(2) }}%"
+                                         data-width="4"
+                                         data-fontsize="16"
+                                         data-percent="{{ amount }}"
+                                         data-fgcolor="#165e80"
+                                         data-total="100"
+                                         data-part="{{ percent }}"
+                                         data-icon-color="#fff">
+                                    </div>
+                                    </center>
+                                    {% endfor %}
+                                    <center>
+                                    <h5 class="muted" style="margin:5px 0 0 0">{{ ('game.stat.versatility')|trans }}</h5>
+                                    {% set tooltip %}
+                                        {{ attribute(character.stats, "versatilityDamageDoneBonus")|round(2) }} % {{ "game.stat.versatilityDamageDoneBonus"|trans }} |
+                                        {{ attribute(character.stats, "versatilityHealingDoneBonus")|round(2) }} % {{ "game.stat.versatilityHealingDoneBonus"|trans }} |
+                                        -{{ attribute(character.stats, "versatilityDamageTakenBonus")|round(2) }} % {{ "game.stat.versatilityDamageTakenBonus"|trans }}
+                                    {% endset %}
+                                    <span data-toggle="tooltip" data-placement="right" title="{{ tooltip }}">
+                                    <div class="statcircle"
+                                         data-dimension="64"
+                                         data-text="{{ attribute(character.stats, "versatility") }}"
+                                         data-info="{{ attribute(character.stats, "versatilityDamageDoneBonus")|round(2) }}%"
+                                         data-width="4"
+                                         data-fontsize="16"
+                                         data-percent="{{ attribute(character.stats, "versatilityDamageDoneBonus") }}"
+                                         data-fgcolor="#165e80"
+                                         data-total="100"
+                                         data-part="{{ attribute(character.stats, "versatilityDamageDoneBonus") }}"
+                                         data-icon-color="#fff">
+                                    </div>
+                                    </span>
+                                    </center>
+                                </td>
+                            {% endif %}
+
+                        {% endfor %}
+                    </tr>
+                </tbody>
+
+            </table>
+            <div class="hidden-lg">
+                <h3>Werte</h3>
+                <div class="row">
+                {% for stat in mainstats %}
+                    <div class="col-sm-3 col-xs-6">
+                        <center>
+                            {% set amount = attribute(character.stats, stat) %}
+
+                            <h5 class="muted" style="margin:5px 0 0 0">{{ ('game.stat.' ~ stat)|trans }}</h5>
+                            <font size="3">{{ amount }}</font>
+                        </center>
+                    </div>
+                {% endfor %}
+                </div>
+                <hr style="margin:10px 0 0" />
+
+                <div class="row">
+                    {% for stat in substats %}
+                        <div class="col-sm-3 col-xs-6">
+                        {% set amount = attribute(character.stats, stat ~'Rating') %}
+                        {% set percent = attribute(character.stats, stat) %}
+                    <center>
+                    <h5 class="muted" style="margin:5px 0 0 0">{{ ('game.stat.' ~ stat)|trans }}</h5>
+                    <div class="statcircle"
+                         data-dimension="90"
+                         data-text="{{ amount|round(0) }}"
+                         data-info="{{ percent|round(2) }}%"
+                         data-width="4"
+                         data-fontsize="16"
+                         data-percent="{{ amount }}"
+                         data-fgcolor="#165e80"
+                         data-total="100"
+                         data-part="{{ percent }}"
+                         data-icon-color="#fff">
+                    </div>
+                    </center>
+                        </div>
+                    {% endfor %}
+                    <div class="col-sm-3 col-xs-6">
+                        <center>
+                            <h5 class="muted" style="margin:5px 0 0 0">{{ ('game.stat.versatility')|trans }}</h5>
+                            {% set tooltip %}
+                                {{ attribute(character.stats, "versatilityDamageDoneBonus")|round(2) }} % {{ "game.stat.versatilityDamageDoneBonus"|trans }} |
+                                {{ attribute(character.stats, "versatilityHealingDoneBonus")|round(2) }} % {{ "game.stat.versatilityHealingDoneBonus"|trans }} |
+                                -{{ attribute(character.stats, "versatilityDamageTakenBonus")|round(2) }} % {{ "game.stat.versatilityDamageTakenBonus"|trans }}
+                            {% endset %}
+                            <span data-toggle="tooltip" data-placement="right" title="{{ tooltip }}">
+                                <div class="statcircle"
+                                     data-dimension="90"
+                                     data-text="{{ attribute(character.stats, "versatility") }}"
+                                     data-info="{{ attribute(character.stats, "versatilityDamageDoneBonus")|round(2) }}%"
+                                     data-width="4"
+                                     data-fontsize="16"
+                                     data-percent="{{ attribute(character.stats, "versatilityDamageDoneBonus") }}"
+                                     data-fgcolor="#165e80"
+                                     data-total="100"
+                                     data-part="{{ attribute(character.stats, "versatilityDamageDoneBonus") }}"
+                                     data-icon-color="#fff">
+                                </div>
+                             </span>
+                        </center>
+                    </div>
+                </div>
+            </div>
+            <h3>Talente und Glyphen</h3>
+            
+<ul class="nav nav-tabs" role="tablist" id="spectabs">
+    {% for key, tree in character.talents %}
+        {% if tree['spec'] is defined %}
+        {% set spec = tree['spec'] %}
+
+        <li role="presentation" {% if tree.selected is defined %}class="active"{% endif %}>
+            <a href="#spec-pane-{{ key }}" aria-controls="home" role="tab" data-toggle="tab">
+                <img width="18" src="{{ ("http://us.media.blizzard.com/wow/icons/18/" ~ spec.icon ~ ".jpg")|cacheimage }}" />
+                {{ spec.name }}{% if tree.selected is defined %} <small class="muted"> {{ "website.active"|trans }}</small>{% endif %}
+            </a>
+        </li>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+<div class="tab-content">
+    {% for key, tree in character.talents %}
+        {% if tree['spec'] is defined %}
+        {% set talents = tree['talents'] %}
+        {% set glyphs = tree['glyphs'] %}
+        {% set spec = tree['spec'] %}
+        <div role="tabpanel" class="tab-pane{% if tree.selected is defined %} active{% endif %}" id="spec-pane-{{ key }}">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4>Talente</h4>
+                    <table class="table">
+                    {% for talent in talents %}
+                        <tr>
+                            <td width="15%">Tier {{ talent.tier + 1 }}</td>
+                            <td width="15%">
+                                <img width="18" src="{{ ("http://us.media.blizzard.com/wow/icons/18/" ~ talent.spell.icon ~ ".jpg")|cacheimage }}" />
+                            </td>
+                            <td width="70%">{{ talent.spell.name }}</td>
+                        </tr>
+                    {% endfor %}
+                    </table>
+                </div>
+                <div class="col-sm-6">
+                    <h4>Glyphen</h4>
+                    <table class="table table-condensed" style="margin: 0;">
+                        <thead>
+                            <tr>
+                                <th colspan="2">
+                                    {{"game.glyph.major"|trans }}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                       {% for glyph in glyphs['major'] %}
+                           <tr>
+                               <td>
+                                   <img width="18" src="{{ ("http://us.media.blizzard.com/wow/icons/18/" ~ glyph.icon ~ ".jpg")|cacheimage }}" />
+                                </td>
+                               <td>{{ glyph.name }}</td>
+                           </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th colspan="2">
+                                    {{"game.glyph.minor"|trans }}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for glyph in glyphs['minor'] %}
+                           <tr>
+                               <td>
+                                   <img width="18" src="{{ ("http://us.media.blizzard.com/wow/icons/18/" ~ glyph.icon ~ ".jpg")|cacheimage }}" />
+                                </td>
+                               <td>{{ glyph.name }}</td>
+                           </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+
+            <h3>Progress</h3>
+            {% for raid in raids %}
+                <h4>{{ ("game.raid." ~ raid.slug)|trans }}</h4>
+                <div class="raidprogress profile">
+                <div class="progress">
+                {% for boss in raid.bosses %}
+                    {% if progress[raid.blizzId]['bosses'][boss.blizzId] is defined %}
+                        {% set status = progress[raid.blizzId]['bosses'][boss.blizzId].highest %}
+                    {% else %}
+                        {% set status = constant('XRealm\\AppBundle\\Entity\\GroupBossStatus::STATUS_NONE') %}
+                    {% endif %}
+
+
+                    <div class="progress-bar status-{{ status }}" role="progressbar" aria-valuenow="{{ (100/ raid.bosses|length )}}" aria-valuemin="0" aria-valuemax="100" style="width: {{ (100/ raid.bosses|length )}}%">
+                        <div class="progress-boss-image">
+                            <img title="{{ ("game.boss." ~ boss.slug)|trans }}" src="{{ ("http://media.blizzard.com/wow/renders/npcs/portrait/creature" ~ boss.blizzId ~ ".jpg")|cacheimage }}" />
+                        </div>
+                        <span>{{ ("game.boss." ~ boss.slug)|trans }}</span>
+                        <span class="rating kills">
+                            <small>{{ ("game.boss.status." ~ constant('XRealm\\AppBundle\\Entity\\GroupBossStatus::STATUS_NORMAL'))|trans }}</small>
+                            {{ progress[raid.blizzId]['bosses'][boss.blizzId][constant('XRealm\\AppBundle\\Entity\\GroupBossStatus::STATUS_NORMAL')] }}<br />
+                            <small>{{ ("game.boss.status." ~ constant('XRealm\\AppBundle\\Entity\\GroupBossStatus::STATUS_HEROIC'))|trans }}</small>
+                            {{ progress[raid.blizzId]['bosses'][boss.blizzId][constant('XRealm\\AppBundle\\Entity\\GroupBossStatus::STATUS_HEROIC')] }}<br />
+                            <small>{{ ("game.boss.status." ~ constant('XRealm\\AppBundle\\Entity\\GroupBossStatus::STATUS_MYTHIC'))|trans }}</small>
+                            {{ progress[raid.blizzId]['bosses'][boss.blizzId][constant('XRealm\\AppBundle\\Entity\\GroupBossStatus::STATUS_MYTHIC')] }}
+                        </span>
+                    </div>
+                    {# {{ ("game.boss.status." ~ status)|trans }} #}
+                {% endfor %}
+                </div>
+                </div>
+            {% endfor %}
+            <hr />
+            <div class="progresslegend row">
+                {% for status in [
+                    constant('XRealm\\AppBundle\\Entity\\GroupBossStatus::STATUS_NONE'),
+                    constant('XRealm\\AppBundle\\Entity\\GroupBossStatus::STATUS_NORMAL'),
+                    constant('XRealm\\AppBundle\\Entity\\GroupBossStatus::STATUS_HEROIC'),
+                    constant('XRealm\\AppBundle\\Entity\\GroupBossStatus::STATUS_MYTHIC')
+                ] %}
+                <div class="col-sm-3">
+                    <div class="legend status-{{ status }}">
+                    </div>
+                    {{ ("game.boss.status." ~ status)|trans }}
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

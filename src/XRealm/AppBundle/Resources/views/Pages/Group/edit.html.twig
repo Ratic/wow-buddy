@@ -1,0 +1,41 @@
+{% extends "XRealmAppBundle:Pages/Group:group_layout.html.twig" %}
+{% form_theme form 'XRealmAppBundle:Form:fields.html.twig' %}
+
+{% block title %}
+    {{ "website.title.settings"|trans }} {{ group.name }} -
+{% endblock title %}
+
+{% block group_content %}
+{{ form_start(form) }}
+
+    <div role="tabpanel">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation"{% if not showProgressEdit is defined %} class="active"{% endif %}><a href="#base" aria-controls="base" role="tab" data-toggle="tab">{{ "website.groupoption.base"| trans }}</a></li>
+            <li role="presentation"{% if showProgressEdit is defined %} class="active"{% endif %}><a href="#progress" aria-controls="progress" role="tab" data-toggle="tab">{{ "website.groupoption.progress"| trans }}</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane{% if not showProgressEdit is defined %} active{% endif %}" id="base">
+                {{ form_row(form.name) }}
+                {{ form_row(form.isPublic) }}
+                {{ form_row(form.description) }}
+            </div>
+            <div role="tabpanel" class="tab-pane{% if showProgressEdit is defined %} active{% endif %}" id="progress">
+                <div class="row">
+                    {% for raid in raids %}
+                        <div class="col-sm-6">
+                            <h3>{{ ('game.raid.' ~ raid.slug)|trans }}</h3>
+                            {% for boss in raid.bosses %}
+                                {{ form_row(attribute(form, ('boss_' ~ boss.blizzId))) }}
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{{ form_end(form) }}
+{% endblock group_content %}

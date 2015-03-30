@@ -1,0 +1,43 @@
+website:
+    title: xRealm
+    login_register: Anmelden / Registrieren
+    no_character: Kein Character
+    add: Hinzufügen
+
+form:
+    password:
+        label: Passwort
+        placeholder: Wählen Sie ein sicheres Passwort
+    password_login:
+        label: Passwort
+        placeholder: Passwort
+    confirm:
+        label: Passwort wiederholen
+        placeholder: Bitte wiederholen Sie Ihr Passwort
+    button:
+        login: Anmelden
+        register: Registrieren
+    username:
+        label: Nutzername
+        placeholder: FooBar
+    email:
+        label: E-Mail
+        placeholder: meine-email@example.org
+    error:
+        email: Test
+        email_unique: Diese E-Mail wird bereits verwendet, bitte wählen Sie eine andere oder Nutzen die "Passwort vergessen" Funktion.
+        username_unique: Dieser Nutzername wird bereits verwendet, bitte wählen Sie einen andere oder Nutzen die "Passwort vergessen" Funktion.
+    string:
+        or: Oder
+    character_name:
+        label: Charakter
+        placeholder: Shadowsteproxxorlol
+    realm:
+        label: Server
+        placeholder: Testserver
+    add:
+        label: Hinzufügen
+headline:
+    login: Anmelden
+    register: Registrieren
+    add_character: Charakter hinzufügen

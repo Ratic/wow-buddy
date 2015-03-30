@@ -1,0 +1,11 @@
+{% extends "XRealmAppBundle:Includes:base_layout.html.twig" %}
+{% form_theme form 'XRealmAppBundle:Form:fields.html.twig' %}
+
+{% block content %}
+<div class="row">
+	<div class="col-sm-12 panel panel-info">
+		<h2 class="banner">{{ "headline.add_character"|trans }}</h2>
+		{{ form(form) }}
+	</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,57 @@
+{%- block form_widget -%}
+    {% if compound %}
+        {{- block('form_widget_compound') -}}
+    {% else %}
+        {{- block('form_widget_simple') -}}
+    {% endif %}
+{%- endblock form_widget -%}
+
+{%- block form_row -%}
+    <div class="form-group{% if errors %} has-error has-feedback{% endif %}">
+        {{- form_label(form) -}}
+        
+        {{- form_widget(form, { 'attr': { 'class': 'form-control' } }) -}}
+		{% if errors %}
+		<span class="form-control-feedback" aria-hidden="true"><i class="icon icon-times"></i></span>
+		{% endif %}
+    </div>
+	{{- form_errors(form) -}}
+{%- endblock form_row -%}
+
+{% block form_errors %}
+{% spaceless %}
+    <span class="help-inline">
+        {% if errors|length > 0 %}
+            {% for error in errors %}
+                <p class="text-danger">{{ error.messageTemplate|trans }}</p>
+            {% endfor %}
+        {% endif %}
+    </span>
+{% endspaceless %}
+{% endblock form_errors %}
+
+{%- block form_label -%}
+    {% if label is not sameas(false) -%}
+        {% if not compound -%}
+            {% set label_attr = label_attr|merge({'for': id}) %}
+        {%- endif %}
+        {% if required -%}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+        {%- endif %}
+        {% if label is empty -%}
+            {%- if label_format is not empty -%}
+                {% set label = label_format|replace({
+                    '%name%': name,
+                    '%id%': id,
+                }) %}
+            {%- else -%}
+                {% set label = name|humanize %}
+            {%- endif -%}
+        {%- endif -%}
+        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+			{{ label|trans }}:{% if required -%} *{%- endif %}
+			</label>
+    {%- endif -%}
+{%- endblock form_label -%}
+
+{%- block button_label -%}{%- endblock -%}

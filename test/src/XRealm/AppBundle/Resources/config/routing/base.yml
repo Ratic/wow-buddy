@@ -1,0 +1,18 @@
+index:
+    path:     /
+    defaults: { _controller: XRealmAppBundle:Index:index }
+
+login:
+    path:     /login
+    defaults: { _controller: XRealmAppBundle:Security:login }
+
+register:
+    path:     /register
+    defaults: { _controller: XRealmAppBundle:Security:register }
+
+logout:
+    path: /logout
+
+login_check:
+    path: /login_check
+

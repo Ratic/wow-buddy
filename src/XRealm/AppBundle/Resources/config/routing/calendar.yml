@@ -1,0 +1,9 @@
+calendar_join_event:
+    path: /join/{id}
+    defaults: { _controller: XRealmAppBundle:Calendar:joinEvent }
+    methods:  [POST]
+
+calendar_index:
+    path: /{month}
+    defaults: { _controller: XRealmAppBundle:Calendar:index }
+    methods:  [GET]

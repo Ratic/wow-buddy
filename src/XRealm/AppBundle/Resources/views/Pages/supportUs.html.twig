@@ -1,0 +1,22 @@
+{% extends "XRealmAppBundle:Includes:base_layout.html.twig" %}
+
+{% block content %}
+    <h1>Für jedes Anliegen die richtige Gruppe</h1>
+    <hr />
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <h3 class="banner">Fehler und Bugs melden</h3>
+                <p>
+                    Sie haben einen Fehler entdeckt, oder denken das eine Funktion falsch ist? Melde uns das doch einfach und wir werden es verbessern.
+                </p>
+                <a class="btn btn-primary" href="{{ path('groups_show', {'slug': "xrealm-bugreport"}) }}">Zur Gruppe</a>
+            </div>
+        </div>
+        <div class="col-sm-6">
+
+        </div>
+    </div>
+
+    <hr />
+{% endblock content %}

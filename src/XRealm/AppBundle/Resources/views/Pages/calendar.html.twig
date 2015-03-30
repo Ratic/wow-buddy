@@ -1,0 +1,250 @@
+{% extends "XRealmAppBundle:Includes:base_layout.html.twig" %}
+
+{% block title %}{{ "website.title.calendar"|trans }} - {% endblock title %}
+
+{% import _self as this %}
+
+{% block content %}
+    <div class="col-sm-3 col-xs-3">
+        <a class="btn btn-link btn-lg" href="{{ path('calendar_index', {
+                'month': calendar.prevMonth|date('Y-m')
+            }) }}">
+            <i class="icon icon-angle-left"></i>
+            <span class="hidden-xs">
+                {{ calendar.prevMonth|datepattern('MMMM') }}
+            </span>
+        </a>
+    </div>
+    <div class="col-sm-6 col-xs-6">
+        <center>
+            <h3 class="calendar-headline">
+                {{ calendar.labelDate|datepattern('MMMM yyyy', app.request.locale) }}
+            </h3>
+        </center>
+    </div>
+
+    <div class="col-sm-3 col-xs-3">
+        <a class="btn btn-link btn-lg pull-right" href="{{ path('calendar_index', {
+                'month': calendar.nextMonth|date('Y-m')
+            }) }}">
+            <span class="hidden-xs">
+                {{ calendar.nextMonth|datepattern('MMMM') }}
+            </span>
+            <i class="icon icon-angle-right"></i>
+        </a>
+    </div>
+    <table class="table event-calendar">
+        <thead>
+
+            {% for column in calendar.weeks|first.columns %}
+                <th>
+                    {{ column.date|datepattern('eeee', app.request.locale) }}
+                </th>
+            {% endfor %}
+        </thead>
+        <tbody>
+        {% for week in calendar.weeks %}
+            <tr>
+                {% for column in week.columns %}
+                    <td{% if not column.isActive %} class="inactive"{% endif %}>
+                        <div class="calendar-field{% if not column.isActive %} inactive{% endif %}{% if column.isToday %} today{% endif %}">
+                            <div class="daycaption">
+                                {{ column.date|date('d') }}
+                                {% if column.date|date('w') == 3 %}
+                                    <small class="muted" data-toggle="tooltip" data-placement="right" title="{{ "0000-00-00 03:00:00"|localizeddate('none', 'long', app.request.locale ) }} - {{ "event.idreset"|trans }}">
+                                        <i class="icon icon-refresh"></i>
+                                    </small>
+                                {% endif %}
+                                <span class="muted visible-xs pull-right">{{ column.date|datepattern('eeee', app.request.locale) }}</span>
+                            </div>
+                        
+                        {% for data in column.events %}
+
+                            {% set event = data.event %}
+                            <div class="event status-{{ data.self_status }}">
+                                <a href="#" data-toggle="modal" data-target="#event_members_{{ event.id }}">
+                                    <div class="event-group">
+                                        {{ event.group.name }}
+                                        <div class="event-time">
+                                        <i class="icon icon-clock-o"></i> {{ event.startAt|date('H:i') }}
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="event-title">
+                                        {{ event.title }}
+                                    </div>
+                                </a>
+                            </div>
+
+                            {% if attribute(event_forms, event.id) is defined %}
+                                {{ this.event_modal(event, attribute(event_forms, event.id).form) }}
+                            {% else %}
+                                {{ this.event_modal(event, false) }}
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
+
+{% macro event_modal(event, form) %}
+<div class="modal fade" id="event_members_{{ event.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">{{ event.title }}</h4>
+        </div>
+        <div class="modal-body row">
+          <div class="col-sm-12">
+              <p>
+                  <i class="icon icon-calendar"></i>
+                   {{ event.startAt|localizeddate('full', 'none', app.request.locale ) }}
+                   |
+                   <i class="icon icon-clock-o"></i>
+                   {{ event.startAt|localizeddate('none', 'short', app.request.locale ) }}
+                   {% if event.endAt %}
+                       - {{ event.endAt|localizeddate('none', 'short', app.request.locale ) }}
+                   {% endif %}
+
+              </p>
+              <hr />
+          </div>
+          <div class="muted col-sm-12">
+              {{ "website.createdby"|trans }}:
+              <a class="amorylink" href="{{ path("profile_user_show", {'identifier': event.createdBy.name ~ '-' ~ event.createdBy.realm.slug}) }}">
+                  {{ event.createdBy.name }} - {{ event.createdBy.realm.name }}
+              </a>
+              in 
+              <a href="{{ path('groups_show', {'slug': event.group.slug}) }}" class="grouplink">
+                   {{ event.group.name }}
+              </a>
+              <hr />
+          </div>
+
+          <div class="col-sm-6">
+              <strong>{{ "website.joinedevent"|trans }}</strong>
+              <table class="table table-striped">
+
+              <tbody>
+              {% set accepted = 0 %}
+              {% for member in event.involvedCharacters %}
+
+                  {% if member.status == constant('XRealm\\AppBundle\\Entity\\EventInvolvedCharacter::STATUS_ACCEPTED') %}
+                     {% set accepted = accepted + 1 %}
+                      <tr>
+                          <td><img height="16" src="/images/role-{{ member.character.role }}-i.png" /></td>
+                          <td{% if member.comment %} data-toggle="tooltip" data-placement="right" title="{{ member.comment }}"{% endif %}>
+                              {{ member.character.name }} - {{ member.character.realm.name }}
+                              {% if member.comment %}
+                                  <i class="icon icon-comment pull-right"></i>
+                              {% endif %}
+                          </td>
+                      </tr>
+                  {% endif %}
+              {% endfor %}
+              {% if accepted == 0 %}
+                  <tr><td class="muted">{{ "website.none"|trans }}</td></tr>
+              {% endif %}
+              </tbody>
+              </table>
+              </ul>
+          </div>
+          <div class="col-sm-6">
+              <strong>{{ "website.declinedevent"|trans }}</strong>
+              <table class="table table-striped">
+
+              <tbody>
+              {% set declined = 0 %}
+              {% for member in event.involvedCharacters %}
+                  {% if member.status == constant('XRealm\\AppBundle\\Entity\\EventInvolvedCharacter::STATUS_DECLINED') %}
+                      {% set declined = declined + 1 %}
+                      <tr>
+                          <td><img height="16" src="/images/role-{{ member.character.role }}-i.png" /></td>
+                          <td{% if member.comment %} data-toggle="tooltip" data-placement="right" title="{{ member.comment }}"{% endif %}>
+                              {{ member.character.name }} - {{ member.character.realm.name }}
+                              {% if member.comment %}
+                                  <i class="icon icon-comment pull-right"></i>
+                                  <br /><span class="muted visible-xs">{{ member.comment }}</span>
+                              {% endif %}
+                          </td>
+                      </tr>
+                  {% endif %}
+              {% endfor %}
+              {% if declined == 0 %}
+                  <tr><td class="muted">{{ "website.none"|trans }}</td></tr>
+              {% endif %}
+              </tbody>
+              </table>
+
+          </div>
+      </div>
+    {% if form %}
+        {% form_theme form 'XRealmAppBundle:Form:fields.html.twig' %}
+        {{ form_start(form) }}
+    {% endif %}
+      <div class="modal-body row">
+          <div class="col-sm-6">
+              <table class="table table-striped">
+                  <tbody>
+                      <tr>
+                          <td width="20"><i class="icon icon-check"></i></td>
+                          <td><strong>{{ "website.joinedevent"|trans }}</strong></td>
+                          <td>{{ accepted }}</td>
+                      </tr>
+                      <tr>
+                          <td width="20"><i class="icon icon-times"></i></td>
+                          <td><strong>{{ "website.declinedevent"|trans }}</strong></td>
+                          <td>{{ declined }}</td>
+                      </tr>
+                      {% set roles = event.getRoleCount() %}
+                      {% if roles is iterable %}
+                          {% for role, count in event.roleCount %}
+                          <tr>
+                              <td><img height="16" src="/images/role-{{ role }}-i.png" /></td>
+                              <td><strong>{{ ("role." ~ role)|trans }}</strong></td>
+                              <td>{{ count }}</td>
+                          </tr>
+                          {% endfor %}
+                      {% endif %}
+                  </tbody>
+              </table>
+          </div>
+          {% if form %}
+
+                <div class="col-sm-12">
+                <hr />
+                <h4>{{ "website.signinevent"|trans }}</h4>
+                {{ form_widget(form.status) }}
+                {{ form_widget(form.comment) }}
+                </div>
+          {% endif %}
+          {#{% if isAssist %}
+          <div class="col-sm-12">
+              <hr />
+              <a href="{{ path('groups_delete_event', {'id':event.id}) }}" class="muted" onclick="return confirm('{{ "website.areyousure"|trans }}');">
+                  {{ "website.deleteevent"|trans }}
+              </a>
+          </div>
+          {% endif %}#}
+        </div>
+
+        <div class="modal-footer">
+            {% if form %}
+                {{ form_widget(form.submit) }}
+            {% endif %}
+          <button type="button" class="btn btn-default" data-dismiss="modal">{{ "website.close"|trans }}</button>
+        </div>
+            {% if form %}
+                {{ form_end(form) }}
+            {% endif %}
+      </div>
+    </div>
+</div>
+{% endmacro %}

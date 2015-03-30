@@ -1,0 +1,12 @@
+XRealm\UserBundle\Entity\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [email]
+            message: form.error.email_unique
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [username]
+            message: form.error.username_unique
+    properties:
+        email:
+           - email:
+               message: form.error.email

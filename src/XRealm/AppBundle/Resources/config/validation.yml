@@ -1,0 +1,24 @@
+XRealm\AppBundle\Entity\Group:
+    properties:
+        name:
+            - Length:
+                min: 5
+                max: 25
+                minMessage: form.error.toshort
+                maxMessage: form.error.tolong
+            - Regex:
+                pattern: "/[^0-9a-zA-Z ]/"
+                match:   false
+                message: form.error.illegalletter
+XRealm\AppBundle\Entity\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [email]
+            message: form.error.email_unique
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [username]
+            message: form.error.username_unique
+    properties:
+        email:
+           - Email:
+               message: form.error.email

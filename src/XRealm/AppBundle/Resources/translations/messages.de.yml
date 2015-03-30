@@ -1,0 +1,429 @@
+website:
+    login_register: Anmelden / Registrieren
+    no_character: Kein Character
+    add: Hinzufügen
+    level: Level
+    notverified: Nicht verifiziert
+    select: Auswählen
+    update: Aktualisieren
+    itemscore: Gegenstandsstufe
+    verify: Verifizieren
+    details: Details
+    showallcomments: Alle Kommentare zeigen (%count% Kommentare)
+    sum: Gesamt
+    active: Aktiv
+    equip: Equipment
+    inbag: In der Tasche
+    event_insert: Eintragen
+    logout: Abmelden
+    amorylink: Arsenal
+    showdetails: Details einblenden
+    hidedetails: Details ausblenden
+    gs: GS.
+    delete: Löschen
+    empty: Leer
+    comment: Kommentar
+    comments: Kommentare
+    creategroup: Gruppe erstellen
+    groupleader: Gruppenleiter
+    private: Privat
+    public: Öffentlich
+    invite_character: Charakter einladen
+    leadinggroups: Gruppen, welche du leitest
+    accept: Annehmen
+    decline: Ablehnen
+    profile: Profil
+    ispublic: Öffentlich
+    isprivate: Privat
+    issticky: Sticky
+    next: Weiter
+    close: Schließen
+    target: Ziel
+    characters: Charaktere
+    createdby: Erstellt durch
+    joinedevent: Nehmen Teil
+    declinedevent: Nehmen nicht Teil
+    unasignedmembers: Ausstehend
+    none: Keiner
+    declined: Abgelehnt
+    signinevent: Anmeldung
+    event_youaccepted: Du nimmst Teil
+    event_youdeclined: Du hast abgesagt
+    eventmembers: Teilnehmer
+    deleteevent: Termin löschen
+    areyousure: Sind sie sicher?
+    change: ändern
+    enter: Eintragen
+    title:
+        base: xRealm Planer
+        members: Mitglieder
+        activities: Aktivitäten
+        settings: Einstellungen
+        events: Termine
+        calendar: Kalender
+        groups: Gruppen
+        characters: Charaktere
+        downloads: Downloads
+        
+    groupoption:
+        base: Einstellungen
+        progress: Fortschritt
+        makeassist: Zum Assistenten ernennen
+        revokeassist: Rückstufen
+        makeleader: Zum Gruppenleiter ernennen
+    groupstatus:
+        1: Eingeladen
+    rank:
+        2: Assistent
+        3: Leiter
+    class:
+        1: Krieger
+        2: Paladin
+        3: Jäger
+        4: Schurke
+        5: Priester
+        6: Todesritter
+        7: Schamane
+        8: Magier
+        9: Hexenmeister
+        10: Mönch
+        11: Druide
+
+message:
+    event_created: Der Termin wurde erstellt.
+    makeleader: Der Nutzer %name% - %realm% wurde zum Gruppenleiter ernannt.
+    makeassist: Der Nutzer %name% - %realm% wurde zum Assistenten ernannt.
+    revokeassist: Der Nutzer %name% - %realm% wurder zurück gestuft.
+    externallink: Sie verlassen XRealm.
+    externallink_description: Sie werden auf eine externe Seite weitergeleitet. Wir können für den Inhalt dieser Seite nicht garantieren und sind für diesen nicht verantwortlich.
+    leftgroup: Sie haben die Gruppe %group% verlassen.
+    character_added: Der Charakter "%name%" wurde hinzugefügt.
+    invitedcharacter: Der Charakter %name% - %realm% wurde in Ihre Gruppe eingeladen.
+    savedchanges: Ihre Änderungen wurden gespeichert.
+    maxgroupscreated: Sie leiten bereits die maximale anzahl an zugelassenen Gruppen und können keine weitere erstellen.
+    joinedgroup: Die Einladung für die Gruppe %name% wurde angenommen.
+    declinedgroup: Die Einladung für die Gruppe %name% wurde abgelehnt.
+    eventdeleted: Der Termin wurde gelöscht.
+    acceptedevent: Sie haben Ihren Status für den Termin "%name%" am %date% auf "Angenommen" gesetzt.
+    declinedevent: Sie haben Ihren Status für den Termin "%name%" am %date% auf "Abgelehnt" gesetzt.
+    group:
+        kicked: Der Charakter %name% - %realm% wurde aus der Gruppe entfernt.
+        created: Die Gruppe %name% wurde erstellt.
+error:
+    not_an_event_member: Sie konntent nicht als Mitglied des Events ausgemacht werden.
+    item_notloadable: Das Item konnte nicht geladen werden.
+    notableformember: Diese Aktion ist für den ausgewählren Nutzer nicht möglich.
+    groupermission: Ihre Rechte in dieser Gruppe sind hierfür nicht ausreichend.
+    leaveowngroup: Sie können Ihre eigene Gruppe nicht verlassen.
+    emptypostvalue: Bitte füllen Sie dieses Feld aus.
+    nogroupinvite: Für diese Gruppe liegt keine Einladung vor, oder diese wurde zurückgezogen.
+    groupnotexists: Diese Gruppe existiert nicht oder hat Ihren Namen geändert.
+    nogrouppermission: Sie haben keine Berechtigung um diese Gruppe anzusehen.
+    alreadyingroup: Dieser Charakter ist bereits in Ihrer Gruppe
+    character_dontexists: Dieser Charakter existiert nicht.
+    notVerified: Ihr ausgewählter Charakter ist nicht verifiziert. Bitte verifizieren sie diesen auf Ihrer <a href="%path%">Charakter Übersicht</a>.
+    pleaseverify: Ihr Charakter ist nicht verifiziert. Um diesen zu verifizieren, legen Sie im Spiel die unten aufgelisteten Items ab und loggen sich aus dem Spiel aus. Anschließend klicken Sie bitte auf "Verifizieren" und schließen so die Charakterzuweisung ab. Unter Umständen kann es ein wenig dauern, bis der Charakter verifiziert werden kann, da erst die Arsenal Daten aktuell sein müssen.<br /><br /><small>Tipp: Es müssen mindestens 4 Items angelegt sein, während die aufgelisteten Items abgelegt werden müssen.</small>
+    enddate_sameday: Das Enddatum muss am gleichem Tag sein und später liegen als das Startdatum.
+    group:
+        kickpermission: Sie haben keine Berechtigung um dieses Mitglied aus der Gruppe zu entfernen.
+nav:
+    mycharacters: Charaktere
+    home: Startseite
+    raids: Raids
+    calendar: Kalender
+    profile: Profil
+    downloads: Client / Addon
+    wishlist: Wunschliste
+    groups:
+        index: Gruppen
+        show: Übersicht
+        members: Mitglieder
+        activity: Aktivitäten
+        events: Termine
+        discussion: Diskusion
+        options: Gruppenoptionen
+form:
+    password:
+        label: Passwort
+        placeholder: Wählen Sie ein sicheres Passwort
+    password_login:
+        label: Passwort
+        placeholder: Passwort
+    confirm:
+        label: Passwort wiederholen
+        placeholder: Bitte wiederholen Sie Ihr Passwort
+    button:
+        login: Anmelden
+        register: Registrieren
+    username:
+        label: Nutzername
+        placeholder: FooBar
+    email:
+        label: E-Mail
+        placeholder: meine-email@example.org
+    string:
+        or: Oder
+    character_name:
+        label: Charakter
+        placeholder: Shadowsteproxxorlol
+    realm:
+        label: Server
+        placeholder: Testserver
+    add:
+        label: Hinzufügen
+    create:
+        label: Erstellen
+    save:
+        label: Speichern
+    new:
+        label: Erstellen
+    group_name:
+        label: Gruppenname
+        placeholder: Feedthetroll
+    group_public:
+        label: Gruppen Sichtbarkeit
+        yes: Öffentliche Gruppe
+        no: Versteckte Gruppe
+    group_description:
+        label: Gruppenbeschreibung
+    activitypost:
+        label: Schreibe einen Beitrag
+        placeholder: Heute habe ich...
+        xrealmplaceholder: Ich habe folgendes zu melden...
+    send:
+        label: Senden
+    post_public:
+        label: Sichtbarkeit des Beitrags
+        yes: Öffentlich
+        no: Privat
+    event_name:
+        label: Titel
+        placeholder: "Raid: Hogger Hardmode"
+    event_startat:
+        label: Startet
+    event_endat:
+        label: Endet
+    comment:
+        placeholder: Kommentar
+    error:
+        email: Diese E-Mail adresse ist ungültig.
+        email_unique: Diese E-Mail wird bereits verwendet, bitte wählen Sie eine andere oder Nutzen die "Passwort vergessen" Funktion.
+        username_unique: Dieser Nutzername wird bereits verwendet, bitte wählen Sie einen andere oder Nutzen die "Passwort vergessen" Funktion.
+        notenoughprogress: Mindestens %count% Mitglieder Ihrer Gruppe müssen diesen Boss auf der gewählten Schwierigkeit besiegt haben. (Aktuell %progress%)
+        tolong: Der eingegebene Name ist zu lang.
+        toshort: Der eingegebene Name ist zu kurz.
+        illegalletter: Der Name enthält ungültige Zeichen. Erlaubt sind lediglich Buchstaben und Zahlen.
+        alreadyinevent: Sie sind bereits in diesem Event.
+headline:
+    events: Termine
+    login: Anmelden
+    register: Registrieren
+    add_character: Charakter hinzufügen
+    changerole: Rolle wechseln
+    groups: Gruppen
+    yourgroups: Deine Gruppen
+    invites: Einladungen
+    createevent: Termin erstellen
+    
+    
+item:
+    head: Kopf
+    back: Umhang
+    chest: Brust
+    wrist: Handgelenke
+    hands: Hände
+    waist: Taille
+    legs: Beine
+    feet: Füße
+    finger1: Ring 1
+    finger2: Ring 2
+    finger: Ring
+    trinket1: Schmuck 1
+    trinket2: Schmuck 2
+    trinket: Schmuck
+    neck: Hals
+    shoulder: Schultern
+    tabard: Wappenrock
+    mainHand: Waffenhand
+    offHand: Nebenhand
+    shirt: Hemd
+role:
+    1: Tank
+    2: Nahkampf
+    3: Fernkampf
+    4: Heiler
+game:
+    glyph:
+        major: Große Glyphe
+        minor: Geringe Glyphe
+    stat:
+        crit: Krit
+        haste: Tempo
+        multistrike: Mehrfachschlag
+        mastery: Meisterschaft
+        str: Stärke
+        agi: Beweglichkeit
+        int: Intelligenz
+        sta: Ausdauer
+        versatility: Vielseitigkeit
+        versatilityDamageDoneBonus: Schaden
+        versatilityHealingDoneBonus: Heilung
+        versatilityDamageTakenBonus: erlittener Schaden
+    raid:
+        highmaul: Hochfels
+        blackrock-foundry: Schwarzfelsgießerei
+    boss:
+        status:
+            0: Nicht besiegt
+            1: Normal
+            2: Heroisch
+            3: Mytisch
+        kargath-bladefist: Kargath Messerfaust
+        the-butcher: Der Schlächter
+        tectus: Tectus
+        brackenspore: Farnspore
+        twin-ogron: Ogronzwillinge
+        koragh: Ko'ragh
+        imperator-margok: Kaiser Mar'gok
+        gruul: Gruul
+        oregorger: Erzfresser
+        the-blast-furnace: Der Schmelzofen
+        hansgar-and-franzok: Hans'gar und Franzok
+        flamebender-kagraz: Ka'graz
+        kromog: Kromog
+        the-iron-maidens: Die Eisernen Jungfern
+        beastlord-darmac: Abrichter Darmac
+        operator-thogar: Zugführer Thogar
+        blackhand: Schwarzfaust
+        
+notification:
+    makeleader: %name% wurde zum Gruppenleiter ernannt.
+    invited_to_group: %name% wurde in die Gruppe eingeladen.
+    removed_from_group: %name% wurde aus der Gruppe entfernt.
+    declined_group_invite: %name% hat die Gruppeneinladung abgelehnt.
+    joined_group: %name% ist der Gruppe beigetreten.
+    left_group: %name% hat die Gruppe verlassen.
+datetime_format: dd.MM.yyyy HH:mm
+event:
+    idreset: Die Schlachtzüge werden zurückgesetzt.
+item-context:
+    raid-finder: Schlachtzugsbrowser
+    raid-normal: Schlachtzug Normal 
+    raid-heroic: Schlachtzug Heroisch
+    raid-mythic: Schlachtzug Mytisch
+    quest-reward: Questbelohnung
+    dungeon-level-up-1: Instanzenbelohnung
+    dungeon-normal: Instanz Normal
+    dungeon-heroic: Instanz Heroisch
+    pvp-unranked: PvP
+    pvp-ranked: PvP Gewertet
+    vendor: Verkäufer
+    trade-skill: Hergestellt
+
+data:
+    itemlevel: Gegenstandsstufe
+    bop: Wird beim Aufheben gebunden
+    boe: Wird beim Aufheben gebunden
+    armor: Rüstung
+    sellprice: Verkaufspreis
+    chancetype:
+        upgrade: Chance auf Kriegsgeschmiedet
+        stat: Chance auf Bonuswert
+        socket: Chance auf Bonussockel
+    socket:
+        prismatic: Prismatischer Sockel
+    inventorytype:
+        0: ammo
+        1: Kopf
+        2: Hals
+        3: Schultern
+        4: Hemd
+        5: Brust
+        6: Tailie
+        7: Beine
+        8: Füße
+        9: Armschienen
+        10: Hände
+        11: Ring
+        12: Ring
+        13: Einhändig
+        14: Schmuck
+        15: Rücken
+        16: Waffenhand
+        17: Einhändig
+        18: Tasche
+        19: Wappenrock
+        20: Tasche
+        21: Tasche
+        22: Tasche
+        23: Nebenhand
+    stat:
+        0: Mana
+        1: Leben
+        3: Beweglichkeit
+        4: Stärke
+        5: Intelligenz
+        6: Willenskraft
+        7: Ausdauer
+        12: Verteidigung
+        13: Ausweichen
+        14: Parieren
+        15: Blocken
+        16: Trefferwertung
+        17: Trefferwertung
+        18: Trefferwertung
+        19: Kritische Trefferwertung
+        20: Kritische Trefferwertung
+        21: Kritische Trefferwertung
+        22: Treffer Vermeidung
+        23: Treffer Vermeidung
+        24: Treffer Vermeidung
+        25: Kritische Treffer Vermeidung
+        26: Kritische Treffer Vermeidung
+        27: Kritische Treffer Vermeidung
+        28: Tempowertung
+        29: Tempowertung
+        30: Tempowertung
+        31: Trefferwertung
+        32: Kritische Trefferwertung
+        33: Treffer Vermeidung
+        34: Critical Strike Avoidance
+        35: PvP Wiederstand
+        36: Tempowertung
+        37: Geschick
+        38: Angriffskraft
+        39: Fernkampf Angriffskraft
+        40: Vielseitigkeit
+        41: Bonus Heilung
+        42: Bonus Schaden
+        43: Mana Regeneration
+        44: Rüstungsdurchdringen
+        45: Zauberschaden
+        46: Leben pro 5 Sek.
+        47: Zauberdurchschlag
+        48: Blocken
+        49: Meisterschaft
+        50: Bonus Rüstung
+        51: Feuer Resistenz
+        52: Frost Resistenz
+        53: Heilig Resistenz
+        54: Schatten Resistenz
+        55: Natur Resistenz
+        56: Arkan Resistenz
+        57: PvP Kraft
+        58: Verstärken
+        59: Mehrfachschlag
+        60: Abklingzeitenveringerung
+        61: Geschwindigkeit
+        62: Lebensraub
+        63: Vermeidung
+        64: Robustheit
+        65: Unused 7
+        66: Spalten
+        67: Vielseitigkeit
+        68: Unused 10
+        69: Unused 11
+        70: Unused 12
+        73: Beweglichkeit oder Intelligenz
+        ilevel: Gegenstandsstufe
+        armor: Rüstung

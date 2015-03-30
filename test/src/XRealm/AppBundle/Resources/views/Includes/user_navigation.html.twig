@@ -1,0 +1,10 @@
+<div id="user-navigation">
+	<a href="#" class="username">{{ app.user.username }}</a>
+	{% if app.user.blizzCharacters|length  <= 0 %}
+		<a class="text-danger" href="{{ path('profile_character_index') }}">
+		{{ "website.no_character"|trans }} <i class="icon icon-exclamation-circle"></i> <br />
+		{{ "website.add"|trans }}
+		
+		</a>
+	{% endif %}
+</div>

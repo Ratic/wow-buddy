@@ -1,0 +1,165 @@
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+#page {
+min-height:100%;
+position: relative;
+padding-bottom: 200px;
+overflow: hidden;
+}
+#navigation {
+	 
+	display: block;
+	background: #F9F9F9;
+	box-shadow: 0 0 5px 0px rgba(0,0,0, 0.75);
+	-moz-box-shadow: 0 0 5px 0px rgba(0,0,0, 0.75);
+	-webkit-box-shadow: 0 0 5px 0px rgba(0,0,0, 0.75);
+	position: relative;
+	z-index: 2;
+}
+#header {
+	display: block;
+	position:relative;
+	border-bottom: 1px solid #EEEEEE;
+	z-index: 3;
+	background: #FFFFFF;
+}
+#logo {
+	padding: 20px 20px;
+	margin: 10px 0;
+	width: 195px;
+	display: block;
+}
+#nav {
+	display: block;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	font-family: Dosis, Arial, sans-serif;
+
+	a {
+		display: block;
+		text-decoration: none;
+		color: #333333;
+		padding: 20px 30px;
+		font-size: 1.4em;
+		@include transition(all .2s ease-in);
+		&:hover {
+			background: $brand-info;
+			color: #ffffff;
+		}
+	}
+	li {
+		&.bg {
+			position:absolute;
+			left: -100px;
+			top: 0;
+			bottom: 0;
+			transition: a
+		}
+		&.element {
+			float: left;
+			display: block;
+		}
+	}
+}
+#content {
+	padding: 20px;
+}
+.panel {
+	border: 1px solid #f5f5f5;
+	padding: 10px;
+	@include box-shadow(5px 5px 40px rgba(0,0,0,0.35));
+	zoom: 1;
+	&:before,
+	&:after {
+		content: " "; /* 1 */
+		display: table; /* 2 */
+	}
+
+	&:after {
+		clear: both;
+	}
+
+	&.panel-info {
+		background: lighten($brand-info, 10%);
+		color: #ffffff;
+		border-color: darken($brand-info, 20%);
+		.form-control {
+			border-color: darken($brand-info, 20%);
+		}
+	}
+	.banner {
+		@include box-shadow(0 2px  3px rgba(0,0,0,0.35));
+		background: lighten($brand-info, 30%);
+		padding: 10px 10px 10px 30px;
+		margin-left: -20px;
+		margin-right: 30px;
+		font-weight: normal;
+	}
+}
+.info-circle {
+	font-family: Dosis, Arial, sans-serif;
+	background: #EEEEEE;
+	height: 100px;
+	line-height: 100px;
+	width: 100px;
+	@include border-radius(50px);
+	margin: 20px auto;
+	font-size: 1.4em;
+	text-align: center;
+	color: #666666;
+	font-weight: bold;
+	@include box-shadow(5px 5px 40px rgba(0,0,0,0.2), 0 1px  3px rgba(0,0,0,0.1));
+}
+
+#footer {
+	background: $brand-info;
+	margin-top: 80px;
+	min-height: 200px;
+	color: #FFFFFF;
+	position:absolute;
+	bottom:0;
+	right: 0;
+	left: 0;
+	padding-top: 20px;
+	strong, li {
+		display: block;
+		text-align: center;
+	}
+	strong {
+		padding-bottom: 10px;
+		border-bottom: 1px solid lighten($brand-info, 10%);
+		margin-bottom: 10px;
+	}
+	ul {
+
+		padding: 0;
+		list-style: none;
+		a {
+			padding: 5px 10px;
+			display: block;
+		}
+	}
+}
+
+#loginbtn {
+	margin: 35px 0;
+	float: right;
+}
+
+@media screen and (max-width: 768px) { 
+	#footer {
+		position: relative;
+	}
+	#page {
+		padding-bottom: 0;
+	}
+	#loginbtn {
+		float: none;
+		margin: 10px 0;
+	}
+}

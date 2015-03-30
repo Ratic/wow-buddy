@@ -1,0 +1,8 @@
+profile_character_index:
+    path: /characters
+    defaults: { _controller: XRealmAppBundle:Profile/Character:index }
+    methods:  [GET]
+profile_character_create:
+    path: /characters
+    defaults: { _controller: XRealmAppBundle:Profile/Character:index }
+    methods:  [POST]

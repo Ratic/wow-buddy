@@ -1,0 +1,154 @@
+<?php
+// src/XRealm/UserBundle/Entity/User.php
+namespace XRealm\UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * XRealm\UserBundle\Entity\BlizzCharater
+ *
+ * @ORM\Table(name="blizz_character")
+ * @ORM\Entity()
+ */
+class BlizzCharacter
+{
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="characters")
+     */
+	private $user;
+
+    /**
+     * @ORM\Column(name="is_verified", type="boolean")
+     */
+    private $isVerified;
+
+    /**
+     * @ORM\Column(name="is_selected", type="boolean")
+     */
+    private $isSelected;
+
+    /**
+     * @ORM\Column(type="string", length=25, unique=true)
+     */
+	private $name;
+
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+	private $thumbnail;
+
+    /**
+     * @ORM\Column(type="integer", length=25)
+     */
+	private $achievmentPoints;
+
+    /**
+     * @ORM\Column(type="integer", length=1)
+     */
+	private $gender;
+
+    /**
+     * @ORM\Column(type="integer", length=4)
+     */
+	private $level;
+
+    /**
+     * @ORM\Column(type="integer", length=4)
+     */
+	private $race;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="BlizzRealm", inversedBy="blizzCharacters")
+     */
+	private $realm;
+
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set isVerified
+     *
+     * @param boolean $isVerified
+     * @return Character
+     */
+    public function setIsVerified($isVerified)
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * Get isVerified
+     *
+     * @return boolean 
+     */
+    public function getIsVerified()
+    {
+        return $this->isVerified;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \XRealm\UserBundle\Entity\User $user
+     * @return Character
+     */
+    public function setUser(\XRealm\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \XRealm\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set isSelected
+     *
+     * @param boolean $isSelected
+     * @return Character
+     */
+    public function setIsSelected($isSelected)
+    {
+        $this->isSelected = $isSelected;
+
+        return $this;
+    }
+
+    /**
+     * Get isSelected
+     *
+     * @return boolean 
+     */
+    public function getIsSelected()
+    {
+        return $this->isSelected;
+    }
+}

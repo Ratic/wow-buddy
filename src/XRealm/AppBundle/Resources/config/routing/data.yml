@@ -1,0 +1,8 @@
+data_item_show:
+    path: /item/{id}
+    defaults: { _controller: XRealmAppBundle:Data/Item:show }
+    methods:  [GET]
+data_item_show_context:
+    path: /item/{id}/{context}
+    defaults: { _controller: XRealmAppBundle:Data/Item:show }
+    methods:  [GET]

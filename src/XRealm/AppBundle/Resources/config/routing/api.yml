@@ -1,0 +1,28 @@
+api_user:
+    path: /user/{user}
+    defaults: { _controller: XRealmAppBundle:Api/User:get }
+    methods:  [GET]
+    
+api_user_characters:
+    path: /user/{user}/characters
+    defaults: { _controller: XRealmAppBundle:Api/Character:getAll }
+    methods:  [GET]
+
+api_user_character_event:
+    path: /character/{character}/event/{event}
+    defaults: { _controller: XRealmAppBundle:Api/Event:getEvent }
+    methods:  [GET]
+
+api_character_groups:
+    path: /character/{character}/groups
+    defaults: { _controller: XRealmAppBundle:Api/Character:getGroups }
+    methods:  [GET]
+
+
+api_user_login:
+    path: /userlogin/{username}/{password}
+    defaults: { _controller: XRealmAppBundle:Api/User:login }
+    methods:  [GET]
+
+    
+

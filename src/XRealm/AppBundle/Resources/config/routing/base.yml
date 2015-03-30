@@ -1,0 +1,46 @@
+index:
+    path:     /
+    defaults: { _controller: XRealmAppBundle:Index:index }
+
+login:
+    path:     /login
+    defaults: { _controller: XRealmAppBundle:Security:login }
+
+register:
+    path:     /register
+    defaults: { _controller: XRealmAppBundle:Security:register }
+
+logout:
+    path: /logout
+
+login_check:
+    path: /login_check
+
+url_post:
+    path: /redirect
+    defaults: { _controller: XRealmAppBundle:Misc:secureUrl }
+
+imprint:
+    path: /imprint
+    defaults: { _controller: XRealmAppBundle:Misc:imprint }
+    
+downloads:
+    path: /downloads/index
+    defaults: { _controller: XRealmAppBundle:Misc:downloads }
+    
+export:
+    path: /export
+    defaults: { _controller: XRealmAppBundle:Misc:export }
+    
+supportus:
+    path: /supportus
+    defaults: { _controller: XRealmAppBundle:Misc:supportUs }
+
+test:
+    path: /test
+    defaults: { _controller: XRealmAppBundle:Misc:test }
+
+profile_user_show:
+    path: /character/{identifier}/info
+    defaults: { _controller: XRealmAppBundle:Profile/User:show }
+    methods:  [GET]

@@ -1,0 +1,37 @@
+profile_character_index:
+    path: /characters
+    defaults: { _controller: XRealmAppBundle:Profile/Character:index }
+    methods:  [GET]
+profile_character_create:
+    path: /characters
+    defaults: { _controller: XRealmAppBundle:Profile/Character:index }
+    methods:  [POST]
+profile_character_update:
+    path: /characters/update
+    defaults: { _controller: XRealmAppBundle:Profile/Character:update }
+    methods:  [GET]
+profile_character_verify:
+    path: /characters/verify
+    defaults: { _controller: XRealmAppBundle:Profile/Character:verify }
+    methods:  [GET]
+profile_character_select:
+    path: /characters/select/{id}
+    defaults: { _controller: XRealmAppBundle:Profile/Character:select }
+    methods:  [GET]
+profile_character_delete:
+    path: /characters/delete/{id}
+    defaults: { _controller: XRealmAppBundle:Profile/Character:delete }
+    methods:  [GET]
+profile_character_changerole:
+    path: /characters/changerole/{id}/{role}
+    defaults: { _controller: XRealmAppBundle:Profile/Character:changeRole }
+    methods:  [GET]
+profile_character_updatesingle:
+    path: /characters/update/{id}
+    defaults: { _controller: XRealmAppBundle:Profile/Character:updateCharacter }
+    methods:  [GET]
+profile_user_self:
+    path: /
+    defaults: { _controller: XRealmAppBundle:Profile/User:self }
+    methods:  [GET]
+

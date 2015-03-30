@@ -1,0 +1,24 @@
+services:
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
+    xrealm.command.test:
+        class: XRealm\AppBundle\Console\TestCommand
+        tags:
+            -  { name: console.command }
+
+    blizz_api:
+        class: XRealm\Component\BlizzApi\BlizzApi
+        arguments: ["@api_caller"]
+
+    blizz_character:
+        class: XRealm\Component\BlizzCharacter\BlizzCharacter
+        arguments: ["@security.context", "@blizz_api", "@doctrine.orm.entity_manager"]
+
+    app.twig_extension:
+            class: XRealm\AppBundle\Twig\AppExtension
+            public: false
+            tags:
+                - { name: twig.extension }
+            arguments: ["@kernel"]

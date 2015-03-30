@@ -1,0 +1,296 @@
+#activitystream {
+    .daycaption{
+        font-size: 1.4em;
+        border-bottom: 1px solid #aaaaaa;
+        padding: 10px;
+        margin-bottom: 10px;
+
+    }
+    .activity {
+        padding: 0 10px;
+        margin-bottom: 20px;
+    }
+    .timestamp {
+        color: #888888;
+        padding: 10px;
+        &.post {
+            white-space: nowrap;
+            border: 1px solid #cccccc;
+            border-top: 0;
+            background: #f5f5f5;
+            a {
+                color: #888888;
+            }
+            .icon {
+                color: #aaaaaa;
+            }
+        }
+    }
+    .activity-notification {
+        
+        position: relative;
+        padding: 0;
+        margin-left: 25px;
+        .message {
+            background: #f5f5f5;
+            position:relative;
+            min-height: 60px;
+            padding: 20px 10px;
+            overflow: hidden;
+            border: 1px solid #cccccc;
+        }
+        .content {
+            margin-left: 60px;
+        }
+        a {
+            color: #222222;
+        }
+        .details {
+            background: #f2f2f2;
+        }
+        .character-thumbnail {
+            position:absolute;
+            left: 10px;
+            top: 10px;
+            overflow: hidden;
+            @include border-radius(20px);
+            width: 40px;
+            height: 40px;
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+    .activity-post {
+        background: #ffffff;
+        display: block;
+        border: 1px solid #cccccc;
+        padding: 20px 10px;
+        .details {
+            position:absolute;
+            overflow: hidden;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background: #f5f5f5;
+            width: 120px;
+            padding: 20px 10px;
+            border-right: 1px solid #EEEEEE;
+            .character-thumbnail {
+                overflow: hidden;
+                @include border-radius(20px);
+                width: 40px;
+                height: 40px;
+                margin-left: 25px;
+                margin-bottom: 10px;
+                img {
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+            .detail {
+                display: block;
+                color: #999999;
+                &.amorylink {
+                    color: #333333;
+                    text-align: center;
+                }
+            }
+        }
+        .message {
+            margin-left: 120px;
+            min-height: 80px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        &.is-sticky {
+            .details {
+                .character-thumbnail {
+                    @include box-shadow(inset 0 1px 4px #000000);
+                }
+                background:lighten($brand-info, 30%);
+                .detail {
+                    color: #FFFFFF;
+                    &.amorylink {
+                        color: #FFFFFF;
+                    }
+                }
+            }
+        }
+        &.is-mod {
+            background: lighten($brand-info,10%);
+            .message {
+                background: lighten($brand-info,10%);
+                color: #ffffff;
+            }
+        }
+    }
+    .activity {
+        position: relative;
+        .anchor {
+            position: absolute;
+            top: -100px;
+            display: block;
+            width: 1px;
+            height: 1px;
+        }
+        &.activity-notification-container {
+            .comments {
+                display: none;
+            }
+        }
+    }
+}
+#activitypost {
+    margin: 10px 0;
+    label {
+        display: none;
+    }
+    .public-toggle {
+        margin-right: 20px;
+    }
+    .public-label {
+        margin-right: 15px;
+        line-height: 30px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #activitystream {
+        .timestamp {
+            padding: 5px 10px;
+        }
+        .activity-post {
+            padding: 0;
+
+            .details {
+                max-height: 60px;
+                position: relative;
+                width: auto;
+                display: block;
+                .character-thumbnail {
+                    display: inline-block;
+                    margin-left: 0;
+                    margin-top: -10px;
+                    margin-right: 20px;
+                    float: left;
+                }
+                .detail {
+                    display: inline-block;
+                }
+            }
+            .message {
+                margin: 0;
+                padding: 20px 10px;
+            }
+        }
+    }
+}
+.activity-notification-container{
+    .comments {
+        margin-left: 26px;
+    }
+}
+.comments {
+    clear: both;
+    border: 1px solid #eeeeee;
+    border-top: 0;
+    &.no-comments {
+        display: none;
+    }
+    .addcomment, .comment {
+        background: #f9f9f9;
+        padding: 10px;
+       
+        
+        .userimage {
+            width: 32px;
+            height: 32px;
+            margin: 1px 0;
+            @include border-radius(16px);
+            overflow: hidden;
+            float: left;
+            img {
+                width: 32px;
+                height: 32px;
+            }
+        }
+        .comment-text {
+            margin-left: 76px;
+        }
+    }
+    .addcomment {
+        
+         padding-left: 48px;
+
+    }
+    .comment {
+        clear: both;
+        overflow: hidden;
+        &:first-child {
+             border-top: 1px solid #eeeeee;
+        }
+        .user {
+            width: 110px;
+            float: left;
+        }
+        .userimage {
+            float: none;
+            margin-left: 38px;
+        }
+        .username {
+            overflow: hidden;
+            width: 100%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 0.8em;
+            text-align: center;
+            a{
+                color: #555555;
+            }
+        }
+        .comment-text {
+            margin-left: 115px;
+        }
+    }
+    .chatbubble {
+        padding: 10px;
+        background: #ffffff;
+        @include box-shadow(1px 1px 3px #999999);
+        position: relative;
+        display: inline-block;
+        &:before {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #ffffff transparent transparent;
+            display: block;
+            content: '.';
+            overflow: hidden;
+            left: -10px;
+            top: 8px;
+            z-index: 2;
+            position: absolute;
+        }
+        &:after {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #eeeeee transparent transparent;
+            display: block;
+            content: '.';
+            overflow: hidden;
+            left: -12px;
+            top: 8px;
+            z-index: 1;
+            position: absolute;
+        }
+    }
+    .comment-action {
+        padding-top: 5px;
+        font-size: 0.8em;
+    }
+}

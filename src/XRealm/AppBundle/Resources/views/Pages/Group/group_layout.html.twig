@@ -1,0 +1,75 @@
+{% extends "XRealmAppBundle:Includes:base_layout.html.twig" %}
+{% block scripts %}
+    <script type="text/javascript">
+
+    </script>
+{% endblock scripts %}
+{% block content %}
+    <h1>{{ group.name }} <small><i class="icon icon-star-o"></i> {{ group.groupRating }}</small></h1>
+    <hr />
+    <div class="row">
+        <div class="col-sm-4 col-lg-3">
+            <ul class="nav nav-pills nav-stacked groupnav">
+                <li role="presentation"{% if app.request.attributes.get('_route') == 'groups_show' %} class="active"{% endif %}>
+                    <a href="{{ path("groups_show", {'slug': group.slug}) }}">
+                        <i class="icon icon-dashboard"></i>
+                        {{ "nav.groups.show"|trans }}
+                    </a>
+                </li>
+                {% if not isXRealm or isMember %}
+                <li role="presentation"{% if app.request.attributes.get('_route') == 'groups_show_members' %} class="active"{% endif %}>
+                    <a href="{{ path("groups_show_members", {'slug': group.slug}) }}">
+                        <i class="icon icon-group"></i>
+                        {{ "nav.groups.members"|trans }}
+                        <span class="label label-info pull-right">{{ memberCount }}</span>
+                    </a>
+                </li>
+                {% endif %}
+                
+                
+                <li role="presentation"{% if app.request.attributes.get('_route') == 'groups_show_activity' %} class="active"{% endif %}>
+                    <a href="{{ path("groups_show_activity", {'slug': group.slug}) }}">
+                        <i class="icon icon-comments"></i>
+                        {% if isXRealm %}
+                            {{ "nav.groups.discussion"|trans }}
+                        {% else %}
+                            {{ "nav.groups.activity"|trans }}
+                            {% if unseenActivities %}
+                                <span class="label label-primary pull-right">{{ unseenActivities }}</span>
+                            {% endif %}
+                        {% endif %}
+
+                    </a>
+                </li>
+                {% if isMember %}
+                <li role="presentation"{% if app.request.attributes.get('_route') == 'groups_show_events' %} class="active"{% endif %}>
+                    <a href="{{ path("groups_show_events", {'slug': group.slug}) }}">
+                        <i class="icon icon-calendar"></i>
+                        {{ "nav.groups.events"|trans }}
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if isLeader %}
+                <li role="presentation"{% if app.request.attributes.get('_route') == 'groups_options' or app.request.attributes.get('_route') == 'groups_options_save' %} class="active"{% endif %}>
+                    <a class="muted" href="{{ path("groups_options", {'slug': group.slug}) }}">
+                        <i class="icon icon-cogs"></i>
+                        {{ "nav.groups.options"|trans }}
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+            {% if isMember %}
+            <div class=" hidden-xs">
+                <hr />
+                <center><a href="{{ path('groups_leave', {'slug': group.slug}) }}" class="muted" onclick="return confirm('{{ "website.areyousure"|trans }}');">Gruppe verlassen</a></center>
+            </div>
+            {% endif %}
+        </div>
+        <hr class="visible-xs" />
+        <div class="col-sm-8 col-lg-9">
+            {% block group_content %}
+            {% endblock group_content %}
+        </div>
+    </div>
+{% endblock content %}

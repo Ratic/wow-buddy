@@ -1,0 +1,9 @@
+{% extends "XRealmAppBundle:Includes:base_layout.html.twig" %}
+
+{% block title %}
+    {{ item.name }} - 
+{% endblock title %}
+
+{% block content %}
+    {% include "XRealmAppBundle:Pages/Data:itemData.html.twig" %}
+{% endblock content %}

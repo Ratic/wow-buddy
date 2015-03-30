@@ -1,0 +1,115 @@
+{% extends "XRealmAppBundle:Pages/Group:group_layout.html.twig" %}
+{% import "XRealmAppBundle:Pages/Group:activities.html.twig" as activitie_funcs %}
+
+{% block title %}
+    {{ group.name }} - 
+{% endblock title %}
+
+
+{% block scripts %}
+    <script type="text/javascript">
+
+        function make_clickable(text) {
+                var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+
+                text = text.replace(exp, function(url){
+                    var target = encodeURIComponent(url);
+                    var redirect = "{{ path('url_post', {'url':'_URL_'}) }}";
+                    return '<a target="_blank" href="' + redirect.replace('_URL_',target) + '">' + url + '</a>';
+                });
+
+               /* while(url = exp.exec(text))
+                {
+                    text.replace(url, '<a href="' + redirect.replace('%URL',encodeURI(url) + '">' + url + '</a>"'))
+                }*/
+                return text;
+        }
+        $(document).ready(function(){
+        //$('#activity_post_message').liveUrl();
+            $('.activity-post .message').each(function(){
+                $(this).html(make_clickable($(this).html()));
+            });
+            $('.comment-toggle').click(function(){
+                $(this).parents('.activity').find('.comments').slideDown();
+                return false;
+            });
+        });
+    </script>
+{% endblock scripts %}
+
+{% block group_content %}
+    <h3 class="muted">Gruppenbeschreibung</h3>
+    <hr />
+    <div id="groupdescription">
+        {{ group.description|raw }}
+    </div>
+    {% if stickies|length > 0 %}
+    <h3 class="muted">Gruppenbeiträge</h3>
+
+    <div id="activitystream">
+        {% set lastday = '-' %}
+        {% for activity in stickies %}
+            {% if activity.isPublic or isMember %}
+                    {% if lastday != activity.postedAt|date('Y-m-d') %}
+                        {% set lastday = activity.postedAt|date('Y-m-d') %}
+                        <div class="daycaption">
+                            {{ activity.postedAt|localizeddate('long', 'none', app.request.locale ) }}
+                        </div>
+                    {% endif %}
+
+                {{ activitie_funcs.build(activity, self, isAssist, isXRealm, is_granted('ROLE_MOD')) }}
+
+            {% endif %}
+        {% endfor %}
+    </div>
+        <center><a href="{{ path("groups_show_activity", {'slug': group.slug}) }}">Alle Beiträge ansehen</a></center>
+    {% endif %}
+
+    {% if not isXRealm %}
+    <h3 class="muted">Gruppenfortschritt</h3>
+    <hr />
+    <p>
+        {% for raid in raids %}
+            <h4>{{ ("game.raid." ~ raid.slug)|trans }}</h4>
+            <div class="raidprogress">
+            <div class="progress">
+            {% for boss in raid.bosses %}
+                {% if progress[boss.blizzId] is defined %}
+                    {% set status = progress[boss.blizzId].status %}
+                {% else %}
+                    {% set status = constant('XRealm\\AppBundle\\Entity\\GroupBossStatus::STATUS_NONE') %}
+                {% endif %}
+
+                
+                <div class="progress-bar status-{{ status }}" role="progressbar" aria-valuenow="{{ (100/ raid.bosses|length )}}" aria-valuemin="0" aria-valuemax="100" style="width: {{ (100/ raid.bosses|length )}}%">
+                    <div class="progress-boss-image">
+                        <img title="{{ ("game.boss." ~ boss.slug)|trans }}" src="{{ ("http://media.blizzard.com/wow/renders/npcs/portrait/creature" ~ boss.blizzId ~ ".jpg")|cacheimage }}" />
+                    </div>
+                    <span>{{ ("game.boss." ~ boss.slug)|trans }}</span>
+                    <span class="rating">
+                        <i class="icon icon-star-o"></i> {{ boss.difficulty * status }}
+                    </span>
+                </div>
+                {# {{ ("game.boss.status." ~ status)|trans }} #}
+            {% endfor %}
+            </div>
+            </div>
+        {% endfor %}
+    </p>
+    <div class="progresslegend row">
+        {% for status in [
+            constant('XRealm\\AppBundle\\Entity\\GroupBossStatus::STATUS_NONE'),
+            constant('XRealm\\AppBundle\\Entity\\GroupBossStatus::STATUS_NORMAL'),
+            constant('XRealm\\AppBundle\\Entity\\GroupBossStatus::STATUS_HEROIC'),
+            constant('XRealm\\AppBundle\\Entity\\GroupBossStatus::STATUS_MYTHIC')
+        ] %}
+        <div class="col-sm-3">
+            <div class="legend status-{{ status }}">
+            </div>
+            {{ ("game.boss.status." ~ status)|trans }}
+        </div>
+
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endblock group_content %}

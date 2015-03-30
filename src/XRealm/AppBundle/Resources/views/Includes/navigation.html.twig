@@ -1,0 +1,46 @@
+<ul id="nav" class="hidden-xs">
+  
+        <li class="element{% if app.request.attributes.get('_route') == "groups_index"%} active{% endif %}">
+            <a href="{{ path('groups_index') }}">
+                <i class="icon icon-sitemap"></i>
+                {{ "nav.groups.index"|trans }}
+            </a>
+        </li>
+     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <li class="element{% if app.request.attributes.get('_route') == "calendar_index"%} active{% endif %}">
+            <a href="{{ path('calendar_index', {
+                'month': 'now'|date('Y-m')
+            }) }}">
+                <i class="icon icon-calendar"></i>
+                {{ "nav.calendar"|trans }}
+            </a>
+        </li>
+        {#{% if app_user_characters.selected %}
+        <li class="element{% if
+                app.request.attributes.get('_route') == "profile_user_show"
+                and (app.request.get('identifier', false) == app.user.username or app.request.get('identifier', false) == app_user_characters.selected.data.name ~ '-' ~ app_user_characters.selected.data.realm.slug)
+            %} active{% endif %}">
+                <a href="{{ path("profile_user_show", {'identifier': app_user_characters.selected.data.name ~ '-' ~ app_user_characters.selected.data.realm.slug}) }}">
+                    <i class="icon icon-user"></i>
+                    {{ "nav.profile"|trans }}
+                </a>
+        </li>
+        {% endif %}#}
+        <li class="element pull-right {% if app.request.attributes.get('_route') == "downloads"%} active{% endif %}">
+            <a href="{{ path("downloads") }}">
+                <i class="icon icon-download"></i>
+                {{ "nav.downloads"|trans }}
+            </a>
+        </li>
+    {% endif %}
+</ul>
+<select name="top5" id="nav-mobile" class="visible-xs">
+    <option>Navigation</option>
+    <option value="{{ path("groups_index") }}">{{ "nav.groups.index"|trans }}</option>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% if app_user_characters.selected %}
+        <option value="{{ path("profile_user_show", {'identifier': app_user_characters.selected.data.name ~ '-' ~ app_user_characters.selected.data.realm.slug}) }}">{{ "nav.profile"|trans }}</option>
+        {% endif %}
+        <option value="{{ path("profile_character_index") }}">{{ "nav.mycharacters"|trans }}</option>
+    {% endif %}
+</select>

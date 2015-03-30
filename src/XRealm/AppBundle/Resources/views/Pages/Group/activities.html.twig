@@ -1,0 +1,260 @@
+{% macro build(activity, self, isAssist, isXRealm, isMod) %}
+    {% if activity.type == 'notification' %}
+        <div class="row activity activity-notification-container">
+            <div id="activity-{{ activity.id }}" class="anchor"></div>
+            <div class="activity-notification col-sm-12">
+                <div class="message">
+                    <div class="character-thumbnail class-{{ activity.character.class }}-border">
+                        <img src="{{ activity.character.thumbnail|cacheimage }}" />
+                    </div>
+                    <div class="content">
+                        {% set name %}
+                            <a class="amorylink" href="{{ path("profile_user_show", {'identifier': activity.character.name ~ '-' ~ activity.character.realm.slug}) }}">
+                                {{ activity.character.name }} - {{ activity.character.realm.name }}
+                            </a>
+                        {% endset %}
+                        {{ (activity.message)|trans({
+                            '%name%': name,
+                        })|raw }}
+                    </div>
+
+                </div>
+                <div class="details">
+                    <div class="timestamp">
+                        <span class="timeago" title="{{ activity.postedAt|date('Y-m-d') }}T{{ activity.postedAt|date('H:i') }}Z" data-toggle="tooltip" data-placement="top" data-original-title="Tooltip on top">
+                            {{ activity.postedAt|localizeddate('long', 'short', app.request.locale ) }}
+                        </span>
+                        &bull;
+                         <a href="#activity-{{ activity.id }}"><small><i class="icon icon-chain muted"></i></small></a>
+                         &bull;
+                         <a href="#" class="comment-toggle">
+                             <i class="icon icon-comments muted"></i>
+                             <span class="muted">{{ activity.comments|length }}</span>
+                         </a>
+                    </div>
+                        
+                </div>
+            </div>
+            <div class="comments">
+                {% for comment in activity.comments %}
+                    <div class="comment">
+                        <div class="user">
+                            <div class="username">
+                                <a class="amorylink" href="{{ path("profile_user_show", {'identifier': comment.character.name ~ '-' ~ comment.character.realm.slug}) }}">
+                                    {{ comment.character.name }} - {{ comment.character.realm.name }}
+                                </a>
+                            </div>
+                            <div class="userimage class-{{ comment.character.class }}-border">
+                                 <a class="amorylink" href="{{ path("profile_user_show", {'identifier': comment.character.name ~ '-' ~ comment.character.realm.slug}) }}">
+                                    <img src="{{ comment.character.thumbnail|cacheimage }}" />
+                                 </a>
+                            </div>
+
+                        </div>
+
+                        <div class="comment-text">
+                            <div class="chatbubble">
+                                {{ comment.message|smileys|raw|nl2br }}
+                            </div>
+
+                                <div class="comment-action muted">
+                                    <span class="timeago muted" title="{{ comment.postedAt|date('Y-m-d') }}T{{ comment.postedAt|date('H:i') }}Z" data-toggle="tooltip" data-placement="top">
+                                        {{ comment.postedAt|localizeddate('long', 'short', app.request.locale ) }}
+                                    </span>
+                                    {% if app_user_characters.selected.data.id == comment.character.id or isAssist %}
+                                    &bull;
+                                    <a class="muted" href="{{ path('groups_delete_comment', {'comment': comment.id}) }}">
+                                    <i class="icon icon-trash-o "></i> {{ "website.delete"|trans }}
+                                    </a>
+                                    {% endif %}
+                                </div>
+
+                        </div>
+                    </div>
+                {% endfor %}
+                <form method="post" action="{{ path("groups_post_comment", {'activity': activity.id}) }}">
+                    <div class="addcomment">
+                        <div class="userimage">
+                            <img src="{{ app_user_characters.selected.data.thumbnail|cacheimage }}" />
+                        </div>
+                        <div class="comment-text">
+                            <input name="form[message]" required="required" placeholder="Kommentar..." type="text" class="form-control" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <div class="row activity">
+            <div id="activity-{{ activity.id }}" class="anchor"></div>
+            <div class="col-sm-12 activity-post{% if activity.isSticky %} is-sticky{% endif %}{% if isXRealm and isMod %} is-mod{% endif %}">
+                <div class="details">
+                    {% if isXRealm and isMod %}
+                        <div class="character-thumbnail">
+                            <img src="/saicon.png" />
+                        </div>
+                        {{ activity.character.user.username }} - XRealm Team
+                    {% else %}
+                    <div class="character-thumbnail class-{{ activity.character.class }}-border">
+                        <img src="{{ activity.character.thumbnail|cacheimage }}" />
+                    </div>
+                    <a class="detail amorylink" href="{{ path("profile_user_show", {'identifier': activity.character.name ~ '-' ~ activity.character.realm.slug}) }}">
+                        {{ activity.character.name }} - {{ activity.character.realm.name }}
+                    </a>
+                    {% endif %}
+                </div>
+
+
+                <div class="message">
+                    {{ activity.message|smileys|raw|nl2br }}
+                </div>
+            </div>
+            <div class="timestamp col-sm-12 post">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <i class="icon icon-clock-o"></i>
+                        <span class="timeago" title="{{ activity.postedAt|date('Y-m-d') }}T{{ activity.postedAt|date('H:i') }}Z" data-toggle="tooltip" data-placement="top" data-original-title="Tooltip on top">
+                            {{ activity.postedAt|localizeddate('long', 'short', app.request.locale ) }}
+                        </span>
+                        &bull;
+                        {% if activity.isPublic %}
+                             <i class="icon icon-globe"></i> {{ "website.ispublic"|trans }}
+                        {% else %}
+                             <i class="icon icon-lock"></i> {{ "website.isprivate"|trans }}
+                        {% endif %}
+
+                        {% if activity.isSticky %}
+                            &bull;
+                            <i class="icon icon-thumb-tack"></i>
+                            {{ "website.issticky"|trans }}
+                        {% endif %}
+                        &bull;
+                        <a href="#activity-{{ activity.id }}"><small><i class="icon icon-chain muted"></i></small></a>
+                        &bull;
+                        <a href="#" class="comment-toggle">
+                             <i class="icon icon-comments muted"></i>
+                             <span class="muted">
+                                 {{ activity.comments|length }}
+                                     {% if activity.comments|length == 1 %}{{ "website.comment"|trans }}{% else %}{{ "website.comments"|trans }}{% endif %}
+
+                             </span>
+                         </a>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        {% if activity.isSticky and isAssist %}
+                            {% if isAssist %}
+                            <a class="pull-right" href="{{ path("groups_toggle_activity_sticky",{'id': activity.id}) }}">
+                                <i class="icon icon-unlock"></i>
+                                Unstick
+
+                            </a>
+                             <span class="pull-right" style="display: inlin-block; padding:0 8px;">&bull;</span>
+                            {% endif %}
+                        {% elseif isAssist %}
+                            <a class="pull-right" href="{{ path("groups_toggle_activity_sticky",{'id': activity.id}) }}">
+                                <i class="icon icon-thumb-tack"></i>
+                                Stick
+
+                            </a>
+                             <span class="pull-right" style="display: inlin-block; padding:0 8px;">&bull;</span>
+                        {% endif %}
+                        {% if activity.character and self %}
+                        {% if activity.character.id == self.id or isAssist %}
+                            <a class="pull-right" href="{{ path("groups_delete_activity",{'id': activity.id}) }}">Löschen</a>
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="comments {% if activity.comments|length == 0 %}no-comments{% endif %}">
+                {% set counter = 0 %}
+                {% if activity.comments|length > 4 %}
+                    <div class="comment">
+                        <center>
+                            <a href="#" class="showallcomments">
+                                <small class="muted">
+                                {{ "website.showallcomments"|trans({
+                                    '%count%': activity.comments|length
+                                }) }}
+                                </small>
+                            </a>
+                            </center>
+                    </div>
+                {% endif %}
+                {% for comment in activity.comments %}
+                    {% set counter = counter + 1 %}
+                    
+                    <div class="comment"{% if counter <= loop.length - 4 %}style="display: none"{% endif %}>
+                        <div class="user">
+                            <div class="username">
+                                <a class="amorylink" href="{{ path("profile_user_show", {'identifier': comment.character.name ~ '-' ~ comment.character.realm.slug}) }}">
+                                {{ comment.character.name }} - {{ comment.character.realm.name }}
+                                </a>
+                            </div>
+                            <div class="userimage class-{{ comment.character.class }}-border">
+                                <a class="amorylink" href="{{ path("profile_user_show", {'identifier': comment.character.name ~ '-' ~ comment.character.realm.slug}) }}">
+                                    <img src="{{ comment.character.thumbnail|cacheimage }}" />
+                                </a>
+                            </div>
+
+                        </div>
+                        
+                        <div class="comment-text">
+                            <div class="chatbubble">
+                                {{ comment.message|smileys|raw|nl2br }}
+                            </div>
+
+                            <div class="comment-action muted">
+                                <span class="timeago muted" title="{{ comment.postedAt|date('Y-m-d') }}T{{ comment.postedAt|date('H:i') }}Z" data-toggle="tooltip" data-placement="top">
+                                    {{ comment.postedAt|localizeddate('long', 'short', app.request.locale ) }}
+                                </span>
+                                {% if app_user_characters.selected.data.id == comment.character.id or isAssist %}
+                                &bull;
+                                <a class="muted" href="{{ path('groups_delete_comment', {'comment': comment.id}) }}">
+                                <i class="icon icon-trash-o"></i> {{ "website.delete"|trans }}
+                                </a>
+                                {% endif %}
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                {% endfor %}
+                {% if app_user_characters.selected %}
+                <form method="post" action="{{ path("groups_post_comment", {'activity': activity.id}) }}">
+                    <div class="addcomment">
+                        <div class="userimage class-{{ app_user_characters.selected.data.class }}-border">
+                            <img src="{{ app_user_characters.selected.data.thumbnail|cacheimage }}" />
+                        </div>
+                        <div class="comment-text">
+                            <input name="form[message]" required="required" placeholder="Kommentar..." type="text" class="form-control" />
+                        </div>
+                    </div>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+{% endmacro %}
+
+
+
+{% macro buildPost(activity, self, isAssist) %}
+    <div class="activity-post" style="text-overflow: ellipsis;overflow: hidden;">
+        {{ activity.message|smileys|raw|nl2br }}
+    </div>
+    
+    <div class="muted">
+        <a class="detail amorylink" target="_blank" href="http://eu.battle.net/wow/{{ app.request.locale }}/character/{{ activity.character.realm.slug }}/{{ activity.character.name }}/simple">
+            {{ activity.character.name }} - {{ activity.character.realm.name }}
+        </a>
+        &bull;
+        <span class="timeago" title="{{ activity.postedAt|date('Y-m-d') }}T{{ activity.postedAt|date('H:i') }}Z" data-toggle="tooltip" data-placement="top" data-original-title="Tooltip on top">
+            {{ activity.postedAt|localizeddate('long', 'short', app.request.locale ) }}
+        </span>
+        {% if activity.character.id == self.id or isAssist %}
+            <a class="pull-right" href="{{ path("groups_delete_activity",{'id': activity.id}) }}"><i class="icon icon-trash-o"></i>  Löschen</a>
+        {% endif %}
+    </div>
+    <hr />
+{% endmacro %}

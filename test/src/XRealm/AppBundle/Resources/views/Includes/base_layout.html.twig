@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0;" />
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link href='http://fonts.googleapis.com/css?family=Roboto:700,400' rel='stylesheet' type='text/css'>
+  <title>{{ "website.title"|trans }}</title>
+</head>
+<body>
+	<div id="page">
+		<div id="header">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<div id="logo">
+							<a href="{{ path("index") }}"><img src="/images/logo.png" /></a>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div id="user">
+							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+								{% include "XRealmAppBundle:Includes:user_navigation.html.twig" %}
+								
+							{% else %}
+								<a id="loginbtn" href="{{ path("login") }}" class="btn btn-info">{{ "website.login_register"|trans }}</a>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="navigation">
+			<div class="container">
+			{% include "XRealmAppBundle:Includes:navigation.html.twig" %}
+			</div>
+		</div>
+		<div id="content">
+			<div class="container">
+			{% block content %}
+			{% endblock content %}
+			</div>
+		</div>
+		<div id="footer">
+			<div class="container">
+			{% include "XRealmAppBundle:Includes:footer_navigation.html.twig" %}
+			</div>
+		</div>
+	</div>
+</body>
+</html>

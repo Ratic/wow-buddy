@@ -1,0 +1,8 @@
+{% extends "XRealmAppBundle:Includes:base_layout.html.twig" %}
+
+
+{% block content %}
+    <h1>Export</h1>
+    <p>Kopiere diesen Text und füge ihn im Addon unter dem Punkt "Importieren" ein.</p>
+    <textarea style="width: 100%; max-width: 100%; min-width: 100%; height: 200px; min-height: 200px;">{{ exporter.export() }}</textarea>
+{% endblock content %}

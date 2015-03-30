@@ -1,0 +1,105 @@
+groups_index:
+    path: /
+    defaults: { _controller: XRealmAppBundle:Groups:index }
+    methods:  [GET]
+groups_new:
+    path: /new
+    defaults: { _controller: XRealmAppBundle:Groups:new }
+    methods:  [GET]
+groups_create:
+    path: /create
+    defaults: { _controller: XRealmAppBundle:Groups:new }
+    methods:  [POST]
+    
+groups_add_character:
+    path: /add_character/{slug}
+    defaults: { _controller: XRealmAppBundle:Groups:showMembers }
+    methods:  [POST]
+groups_remove_character:
+    path: /remove_character/{member}
+    defaults: { _controller: XRealmAppBundle:Groups:removeMember }
+    methods:  [GET]
+groups_invite:
+    path: /{slug}/invite_reply/{action}
+    defaults: { _controller: XRealmAppBundle:Groups:inviteReply }
+    methods:  [GET]
+groups_leave:
+    path: /{slug}/leave
+    defaults: { _controller: XRealmAppBundle:Groups:leaveGroup }
+    methods:  [GET]
+
+groups_makeassist:
+    path: /makeassist/{member}
+    defaults: { _controller: XRealmAppBundle:Groups:makeassist }
+    methods:  [GET]
+groups_revokeassist:
+    path: /revokeassist/{member}
+    defaults: { _controller: XRealmAppBundle:Groups:revokeassist }
+    methods:  [GET]
+groups_makeleader:
+    path: /makeleader/{member}
+    defaults: { _controller: XRealmAppBundle:Groups:makeleader }
+    methods:  [GET]
+groups_delete_activity:
+    path: /delete_activity/{id}
+    defaults: { _controller: XRealmAppBundle:Groups:deleteActivity }
+    methods:  [GET]
+groups_toggle_activity_sticky:
+    path: /toggle_activity/{id}
+    defaults: { _controller: XRealmAppBundle:Groups:toggleActivitySticky }
+    methods:  [GET]
+
+##Group Shows
+groups_show:
+    path: /{slug}
+    defaults: { _controller: XRealmAppBundle:Groups:show }
+    methods:  [GET]
+#Member
+groups_show_members:
+    path: /{slug}/members
+    defaults: { _controller: XRealmAppBundle:Groups:showMembers }
+    methods:  [GET]
+groups_show_activity:
+    path: /{slug}/activity
+    defaults: { _controller: XRealmAppBundle:Groups:showActivity }
+    methods:  [GET]
+groups_post_activity:
+    path: /{slug}/activity
+    defaults: { _controller: XRealmAppBundle:Groups:showActivity }
+    methods:  [POST]
+
+
+groups_show_events:
+    path: /{slug}/events
+    defaults: { _controller: XRealmAppBundle:Groups:showEvents }
+    methods:  [GET]
+groups_create_event:
+    path: /{slug}/createevent
+    defaults: { _controller: XRealmAppBundle:Groups:showEvents }
+    methods:  [POST]
+groups_delete_event:
+    path: /deleteevent/{id}
+    defaults: { _controller: XRealmAppBundle:Groups:deleteEvent }
+    methods:  [get]
+groups_join_event:
+    path: /{slug}/joinevent
+    defaults: { _controller: XRealmAppBundle:Groups:showEvents }
+    methods:  [POST]
+groups_options:
+    path: /{slug}/options
+    defaults: { _controller: XRealmAppBundle:Groups:edit }
+    methods:  [GET]
+groups_options_save:
+    path: /{slug}/options
+    defaults: { _controller: XRealmAppBundle:Groups:edit }
+    methods:  [POST]
+
+groups_post_comment:
+    path: /post_comment/{activity}
+    defaults: { _controller: XRealmAppBundle:Groups:postComment }
+    methods:  [POST]
+
+groups_delete_comment:
+    path: /delete_comment/{comment}
+    defaults: { _controller: XRealmAppBundle:Groups:deleteComment }
+    methods:  [GET]

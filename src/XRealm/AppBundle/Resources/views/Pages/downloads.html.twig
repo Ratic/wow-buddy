@@ -1,0 +1,50 @@
+{% extends "XRealmAppBundle:Includes:base_layout.html.twig" %}
+
+{% block title %}{{ "website.title.downloads"|trans }} - {% endblock title %}
+
+{% block content %}
+    <h1>Addon</h1>
+    <hr />
+    <div class="row">
+        <div class="col-sm-4">
+            <center>
+                <h3>Addon herunterladen</h3>
+                <br />
+                <img src="/images/download-icon.png" />
+                <br /><br />
+                <p>
+                    Laden Sie die neuste Version<br /> unseres Addons herunter.
+                </p>
+                <hr />
+                <a href="#" class="btn btn-default">Herunterladen</a>
+            </center>
+        </div>
+        <div class="col-sm-4">
+            <center>
+                <h3>Daten importieren</h3>
+                <br />
+                <img src="/images/export-icon.png" />
+                <br /><br />
+                <p>
+                    Importieren Sie sämtliche Daten von Gruppen und Terminen mit wenigen klicks.
+                </p>
+                <hr />
+                <a href="{{ path('export') }}" class="btn btn-default">Exportieren</a>
+            </center>
+        </div>
+        <div class="col-sm-4">
+            <center>
+                <h3>In-Game nutzen</h3>
+                <br />
+                <img src="/images/ingame-icon.png" />
+                <br /><br />
+                <p>
+                    Nutzen Sie das Addon im Spiel<br /> mit den vollem Umfang.
+                </p>
+                <hr />
+            </center>
+        </div>
+    </div>
+    <h1>Client</h1>
+    <hr />
+{% endblock content %}
