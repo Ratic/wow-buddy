@@ -9,7 +9,7 @@
                     </div>
                     <div class="content">
                         {% set name %}
-                            <a class="amorylink" href="{{ path("profile_user_show", {'identifier': activity.character.name ~ '-' ~ activity.character.realm.slug}) }}">
+                            <a class="amorylink" href="{{ path("data_character_show", {'identifier': activity.character.name ~ '-' ~ activity.character.realm.slug}) }}">
                                 {{ activity.character.name }} - {{ activity.character.realm.name }}
                             </a>
                         {% endset %}
@@ -40,12 +40,12 @@
                     <div class="comment">
                         <div class="user">
                             <div class="username">
-                                <a class="amorylink" href="{{ path("profile_user_show", {'identifier': comment.character.name ~ '-' ~ comment.character.realm.slug}) }}">
+                                <a class="amorylink" href="{{ path("data_character_show", {'identifier': comment.character.name ~ '-' ~ comment.character.realm.slug}) }}">
                                     {{ comment.character.name }} - {{ comment.character.realm.name }}
                                 </a>
                             </div>
                             <div class="userimage class-{{ comment.character.class }}-border">
-                                 <a class="amorylink" href="{{ path("profile_user_show", {'identifier': comment.character.name ~ '-' ~ comment.character.realm.slug}) }}">
+                                 <a class="amorylink" href="{{ path("data_character_show", {'identifier': comment.character.name ~ '-' ~ comment.character.realm.slug}) }}">
                                     <img src="{{ comment.character.thumbnail|cacheimage }}" />
                                  </a>
                             </div>
@@ -98,7 +98,7 @@
                     <div class="character-thumbnail class-{{ activity.character.class }}-border">
                         <img src="{{ activity.character.thumbnail|cacheimage }}" />
                     </div>
-                    <a class="detail amorylink" href="{{ path("profile_user_show", {'identifier': activity.character.name ~ '-' ~ activity.character.realm.slug}) }}">
+                    <a class="detail amorylink" href="{{ path("data_character_show", {'identifier': activity.character.name ~ '-' ~ activity.character.realm.slug}) }}">
                         {{ activity.character.name }} - {{ activity.character.realm.name }}
                     </a>
                     {% endif %}
@@ -187,12 +187,12 @@
                     <div class="comment"{% if counter <= loop.length - 4 %}style="display: none"{% endif %}>
                         <div class="user">
                             <div class="username">
-                                <a class="amorylink" href="{{ path("profile_user_show", {'identifier': comment.character.name ~ '-' ~ comment.character.realm.slug}) }}">
+                                <a class="amorylink" href="{{ path("data_character_show", {'identifier': comment.character.name ~ '-' ~ comment.character.realm.slug}) }}">
                                 {{ comment.character.name }} - {{ comment.character.realm.name }}
                                 </a>
                             </div>
                             <div class="userimage class-{{ comment.character.class }}-border">
-                                <a class="amorylink" href="{{ path("profile_user_show", {'identifier': comment.character.name ~ '-' ~ comment.character.realm.slug}) }}">
+                                <a class="amorylink" href="{{ path("data_character_show", {'identifier': comment.character.name ~ '-' ~ comment.character.realm.slug}) }}">
                                     <img src="{{ comment.character.thumbnail|cacheimage }}" />
                                 </a>
                             </div>

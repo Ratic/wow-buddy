@@ -24,7 +24,7 @@ $( document ).ready(function() {
                 <div class="character-thumbnail">
                     <img src="{{ character.thumbnail|cacheimage(3600) }}" />
                 </div>
-            
+
                 <hr />
                 <a class="btn btn-link profileaction" target="_blank" href="http://eu.battle.net/wow/{{ app.request.locale }}/character/{{ character.realm.slug }}/{{ character.name }}/simple">
                     Arsenal
@@ -67,10 +67,10 @@ $( document ).ready(function() {
                     {% for userCharacter in userCharacters %}
                         <tr>
                             <td>
-                                <a class="amorylink" href="{{ path("profile_user_show", {'identifier': userCharacter.name ~ '-' ~ userCharacter.realm.slug}) }}">
+                                <a class="amorylink" href="{{ path("data_character_show", {'identifier': userCharacter.name ~ '-' ~ userCharacter.realm.slug}) }}">
                                 {{ userCharacter.name }} - {{ userCharacter.realm.name }}
                                 </a>
-                                
+
                             </td>
                             <td>
                                 <small class="no-wrap muted">Level {{ userCharacter.level }}</small>
@@ -97,7 +97,7 @@ $( document ).ready(function() {
                                 <tr>
                             {% endif %}
 
-                                
+
                                 {% if attribute(character.items, slot) is defined %}
                                     {% set item = attribute(character.items, slot) %}
                                     {% if loop.index % 2 == 0 %}
@@ -168,7 +168,7 @@ $( document ).ready(function() {
                                     <td class="itemframe">
                                         <div class="item-round">
                                             <div class="item-placeholder">
-                                                
+
                                             </div>
                                         </div>
                                     </td>
@@ -185,11 +185,11 @@ $( document ).ready(function() {
                                 <td colspan="2" rowspan="9"width="180" class="visible-lg" style="padding: 5px 20px; min-width: 200px;">
                                     {% for stat in mainstats %}
                                         {% set amount = attribute(character.stats, stat) %}
-    
+
                                         <h5 class="muted" style="margin:5px 0 0 0">{{ ('game.stat.' ~ stat)|trans }}</h5>
                                         <font size="3">{{ amount }}</font>
-                                        
-                                        
+
+
                                     {% endfor %}
                                     <hr style="margin:10px 0 0" />
                                     {% for stat in substats %}
@@ -197,7 +197,7 @@ $( document ).ready(function() {
                                         {% set percent = attribute(character.stats, stat) %}
                                     <center>
                                     <h5 class="muted" style="margin:5px 0 0 0">{{ ('game.stat.' ~ stat)|trans }}</h5>
-                                    
+
                                     <div class="statcircle"
                                          data-dimension="64"
                                          data-text="{{ amount|round(0) }}"
@@ -307,7 +307,7 @@ $( document ).ready(function() {
                 </div>
             </div>
             <h3>Talente und Glyphen</h3>
-            
+
 <ul class="nav nav-tabs" role="tablist" id="spectabs">
     {% for key, tree in character.talents %}
         {% if tree['spec'] is defined %}

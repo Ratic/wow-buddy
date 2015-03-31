@@ -17,10 +17,10 @@
         </li>
         {#{% if app_user_characters.selected %}
         <li class="element{% if
-                app.request.attributes.get('_route') == "profile_user_show"
+                app.request.attributes.get('_route') == "data_character_show"
                 and (app.request.get('identifier', false) == app.user.username or app.request.get('identifier', false) == app_user_characters.selected.data.name ~ '-' ~ app_user_characters.selected.data.realm.slug)
             %} active{% endif %}">
-                <a href="{{ path("profile_user_show", {'identifier': app_user_characters.selected.data.name ~ '-' ~ app_user_characters.selected.data.realm.slug}) }}">
+                <a href="{{ path("data_character_show", {'identifier': app_user_characters.selected.data.name ~ '-' ~ app_user_characters.selected.data.realm.slug}) }}">
                     <i class="icon icon-user"></i>
                     {{ "nav.profile"|trans }}
                 </a>
@@ -39,7 +39,7 @@
     <option value="{{ path("groups_index") }}">{{ "nav.groups.index"|trans }}</option>
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         {% if app_user_characters.selected %}
-        <option value="{{ path("profile_user_show", {'identifier': app_user_characters.selected.data.name ~ '-' ~ app_user_characters.selected.data.realm.slug}) }}">{{ "nav.profile"|trans }}</option>
+        <option value="{{ path("data_character_show", {'identifier': app_user_characters.selected.data.name ~ '-' ~ app_user_characters.selected.data.realm.slug}) }}">{{ "nav.profile"|trans }}</option>
         {% endif %}
         <option value="{{ path("profile_character_index") }}">{{ "nav.mycharacters"|trans }}</option>
     {% endif %}

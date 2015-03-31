@@ -79,7 +79,7 @@
                             <td class="hidden-xs">
                             <span class="hidden-xs">
                             {{ "website.groupleader"|trans }}
-                            <a class="amorylink" href="{{ path("profile_user_show", {'identifier': group.details.leader.name ~ '-' ~ group.details.leader.realm.slug}) }}">
+                            <a class="amorylink" href="{{ path("data_character_show", {'identifier': group.details.leader.name ~ '-' ~ group.details.leader.realm.slug}) }}">
                                 {{ group.details.leader.name }} - {{ group.details.leader.realm.name }}
                             </a>
                             </span>

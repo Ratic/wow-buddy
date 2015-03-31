@@ -11,6 +11,17 @@ position: relative;
 padding-bottom: 200px;
 overflow: hidden;
 }
+.item-model-view {
+    margin: 80px 20px;
+    text-align: right;
+}
+.model-viewer {
+  display: inline-block;
+  width: 280px;
+  height: 280px;
+  background: 0 0 repeat;
+  border: 1px solid #cccccc;
+}
 #notifications{
     position: fixed;
     top: 5px;
@@ -688,9 +699,7 @@ table.character-list-table {
         display: none !important;
     }
 }
-.data-tooltip {
-    display: block;
-}
+
 .currency-img {
     width: 10px;
     height: 10px;

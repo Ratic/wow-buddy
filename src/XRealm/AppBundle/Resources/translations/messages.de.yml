@@ -11,6 +11,7 @@ website:
     details: Details
     showallcomments: Alle Kommentare zeigen (%count% Kommentare)
     sum: Gesamt
+    recentitems: Ähnliche Gegenstände
     active: Aktiv
     equip: Equipment
     inbag: In der Tasche
@@ -425,6 +426,8 @@ data:
         68: Unused 10
         69: Unused 11
         70: Unused 12
+        72: Beweglichkeit oder Stärke
         73: Beweglichkeit oder Intelligenz
+
         ilevel: Gegenstandsstufe
         armor: Rüstung

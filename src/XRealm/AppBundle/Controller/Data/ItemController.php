@@ -21,17 +21,28 @@ class ItemController extends BaseController
 
     public function showAction(Request $request, $id, $context = false)
     {
+
         $tooltip = (boolean) $request->get('tooltip', false);
-        $itemlist = $this->getRepository('XRealmAppBundle:BlizzItem')->findOneByIdent($id, $context);
-        $item = $this->prepareItemByList($itemlist);
-        if($item === null)
+        $itemlist = $this->getRepository('XRealmAppBundle:BlizzItem')->findOneByIdent($id, false);
+        if($itemlist === null)
         {
             throw $this->createNotFoundException('The item does not exist');
         }
+        if($context)
+        {
+            $this->contexthirachy[$context] = 999;
+        }
+        $item = $this->prepareItemByList($itemlist);
+        
+        $recentItems = array();
+        $recentItems = $this->pushRecentItems($recentItems, $itemlist, $item);
+
+
         $template = $tooltip ? 'XRealmAppBundle:Pages/Data:itemData.html.twig' : 'XRealmAppBundle:Pages/Data:item.html.twig';
         return $this->render($template, array(
             'item'   => $item,
             'tooltip'    => $tooltip,
+            'recentItems'   => $recentItems,
         ));
     }
 
@@ -52,6 +63,20 @@ class ItemController extends BaseController
         }
 
         return $a < $b ? 1 : -1;
+    }
+
+    protected function pushRecentItems($base, $includes, $item)
+    {
+
+        foreach($includes as $row)
+        {
+            if($row->getId() != $item->getId())
+            {
+                $base[$row->getId()] = $row;
+            }
+            
+        }
+        return $base;
     }
 
 }

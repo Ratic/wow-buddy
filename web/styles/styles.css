@@ -10347,6 +10347,21 @@ body {
 }
 
 /* line 14, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+.item-model-view {
+  margin: 80px 20px;
+  text-align: right;
+}
+
+/* line 18, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+.model-viewer {
+  display: inline-block;
+  width: 280px;
+  height: 280px;
+  background: 0 0 repeat;
+  border: 1px solid #cccccc;
+}
+
+/* line 25, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 #notifications {
   position: fixed;
   top: 5px;
@@ -10356,7 +10371,7 @@ body {
   margin-left: -200px;
 }
 
-/* line 24, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 35, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .tab-content {
   background: #ffffff;
   padding: 10px;
@@ -10364,96 +10379,96 @@ body {
   border-width: 0 1px 1px;
 }
 
-/* line 31, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 42, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .activity-tooltip, .activity-tooltip:hover {
   text-decoration: none;
   cursor: help;
 }
 
-/* line 37, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 48, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .group-table > thead > tr > th {
   background: #f2f2f2;
   border: 0;
 }
-/* line 41, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 52, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .group-table.table-bordered > tbody > tr > td {
   border-width: 1px 0;
 }
-/* line 44, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 55, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .group-table .amorylink {
   color: #333333;
   font-weight: bold;
 }
 
-/* line 50, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 61, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .groupmembers .amorylink {
   color: #333333;
   font-weight: bold;
 }
-/* line 54, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 65, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .groupmembers .rank-3 {
   color: #f48920;
 }
-/* line 57, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 68, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .groupmembers .rank-2 {
   color: #999999;
 }
-/* line 60, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 71, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .groupmembers .rank-2, .groupmembers .rank-3 {
   font-size: 0.8em;
 }
 
-/* line 65, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 76, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .groupnav > li.active > a,
 .groupnav > li.active > a:hover,
 .groupnav > li.active > a:focus {
   background: #165e80;
 }
-/* line 70, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 81, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .groupnav > li > a {
   color: #333333;
 }
-/* line 72, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 83, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .groupnav > li > a .icon {
   margin-right: 10px;
 }
 
-/* line 77, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 88, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .profileaction {
   margin-bottom: 6px;
   min-width: 140px;
 }
 
-/* line 81, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 92, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .profile-charinfo {
   text-align: center;
 }
 
-/* line 87, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 98, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .wowhead-tooltip td {
   background: none !important;
 }
 
-/* line 91, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 102, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .wowhead-tooltip table > tbody > tr > td {
   background: rgba(51, 51, 51, 0.9) !important;
 }
-/* line 93, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 104, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .wowhead-tooltip table > tbody > tr > td td {
   background: none !important;
 }
 
-/* line 97, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 108, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .wowhead-tooltip th {
   background: none !important;
 }
 
-/* line 100, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 111, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .wowhead-tooltip p div {
   background: none !important;
 }
 
-/* line 104, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 115, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .wowhead-tooltip p {
   overflow: hidden;
   width: 36px !important;
@@ -10461,22 +10476,22 @@ body {
   background-position: 0 0 !important;
 }
 
-/* line 111, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 122, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .raidprogress {
   display: table;
   width: 100%;
   min-width: 350px;
 }
-/* line 112, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 123, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .raidprogress .progress {
   display: table-row;
   background: none;
 }
-/* line 120, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 131, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .raidprogress.profile .progress-bar {
   height: 149px;
 }
-/* line 124, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 135, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .raidprogress .progress-bar {
   display: table-cell;
   border-right: 3px solid #FFFFFF;
@@ -10488,7 +10503,7 @@ body {
   position: relative;
   font-family: Dosis, Arial, sans-serif;
 }
-/* line 135, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 146, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .raidprogress .progress-bar .progress-boss-image {
   position: absolute;
   z-index: 2;
@@ -10502,17 +10517,17 @@ body {
   left: 50%;
   margin-left: -25px;
 }
-/* line 145, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 156, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .raidprogress .progress-bar .progress-boss-image img {
   width: 50px;
   height: 50px;
 }
-/* line 150, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 161, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .raidprogress .progress-bar span {
   position: relative;
   z-index: 3;
 }
-/* line 155, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 166, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .raidprogress .progress-bar span.rating {
   position: absolute;
   bottom: 0;
@@ -10520,45 +10535,45 @@ body {
   right: 0;
   text-align: center;
 }
-/* line 161, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 172, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .raidprogress .progress-bar span.rating.kills {
   text-align: left;
   padding-left: 24px;
 }
-/* line 164, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 175, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .raidprogress .progress-bar span.rating.kills small {
   display: inline-block;
   min-width: 55px;
 }
-/* line 170, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 181, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .raidprogress .progress-bar.status-0 {
   background-color: #333333;
 }
-/* line 173, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 184, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .raidprogress .progress-bar.status-1 {
   background-color: #5cb85c;
 }
-/* line 175, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 186, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .raidprogress .progress-bar.status-1 span {
   background: rgba(0, 0, 0, 0.4);
 }
-/* line 179, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 190, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .raidprogress .progress-bar.status-2 {
   background-color: #165e80;
 }
-/* line 181, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 192, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .raidprogress .progress-bar.status-2 span {
   background: rgba(0, 0, 0, 0.4);
 }
-/* line 185, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 196, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .raidprogress .progress-bar.status-3 {
   background-color: #910C0C;
 }
-/* line 187, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 198, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .raidprogress .progress-bar.status-3 span {
   background: rgba(98, 8, 8, 0.8);
 }
-/* line 191, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 202, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .raidprogress .progress-bar span {
   display: inline-block;
   vertical-align: center;
@@ -10568,11 +10583,11 @@ body {
   text-align: center;
 }
 
-/* line 202, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 213, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .progresslegend {
   line-height: 20px;
 }
-/* line 204, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 215, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .progresslegend .legend {
   width: 16px;
   height: 16px;
@@ -10581,75 +10596,75 @@ body {
   margin-bottom: -3px;
   margin-right: 10px;
 }
-/* line 211, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 222, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .progresslegend .legend.status-0 {
   background: #333333;
 }
-/* line 214, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 225, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .progresslegend .legend.status-1 {
   background: #5cb85c;
 }
-/* line 217, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 228, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .progresslegend .legend.status-2 {
   background: #165e80;
 }
-/* line 220, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 231, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .progresslegend .legend.status-3 {
   background: #910C0C;
 }
 
-/* line 225, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 236, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .no-wrap {
   white-space: nowrap;
 }
 
-/* line 229, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 240, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 table.character-list-table .characterole {
   display: block;
 }
-/* line 231, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 242, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 table.character-list-table .characterole.clickable {
   cursor: pointer;
 }
-/* line 234, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 245, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 table.character-list-table .characterole .icon {
   margin: 10px;
 }
-/* line 238, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 249, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 table.character-list-table .action {
   display: inline-block;
 }
-/* line 241, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 252, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 table.character-list-table .charclass {
   font-weight: bold;
 }
-/* line 244, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 255, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 table.character-list-table > tbody > tr > td {
   line-height: 32px;
 }
-/* line 247, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 258, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 table.character-list-table .modal {
   line-height: 18px;
 }
-/* line 250, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 261, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 table.character-list-table .character-thumbnail {
   float: left;
   margin-right: 20px;
 }
 
-/* line 255, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 266, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 #cke_group_description {
   -webkit-box-shadow: none;
   box-shadow: none;
   border: 1px solid #165e80;
 }
-/* line 258, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 269, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 #cke_group_description .cke_top, #cke_group_description .cke_bottom {
   background: #165e80;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-/* line 262, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 273, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 #cke_group_description .cke_combo_button, #cke_group_description .cke_toolgroup {
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
@@ -10659,27 +10674,27 @@ table.character-list-table .character-thumbnail {
   background: #f2f2f2;
   border: 1px solid #0b2e3f;
 }
-/* line 268, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 279, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 #cke_group_description .cke_path_item {
   display: none;
 }
 
-/* line 273, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 284, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 #content {
   padding: 20px;
 }
 
-/* line 277, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 288, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .btn-info {
   background: #1d7eac;
   border-color: #165e80;
 }
-/* line 280, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 291, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .btn-info:hover {
   background: #1a6e96;
 }
 
-/* line 284, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 295, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .panel {
   border: 1px solid #f5f5f5;
   margin-bottom: 20px;
@@ -10688,28 +10703,28 @@ table.character-list-table .character-thumbnail {
   box-shadow: 5px 5px 40px rgba(0, 0, 0, 0.35);
   zoom: 1;
 }
-/* line 290, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 301, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .panel:before, .panel:after {
   content: " ";
   /* 1 */
   display: table;
   /* 2 */
 }
-/* line 296, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 307, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .panel:after {
   clear: both;
 }
-/* line 300, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 311, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .panel.panel-info {
   background: #0e3e55;
   color: #ffffff;
   border-color: black;
 }
-/* line 304, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 315, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .panel.panel-info .form-control {
   border-color: black;
 }
-/* line 308, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 319, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .panel.panel-default {
   background: #f2f2f2;
   color: #333333;
@@ -10717,7 +10732,7 @@ table.character-list-table .character-thumbnail {
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
-/* line 315, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 326, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .panel .banner {
   font-family: Dosis, Arial, sans-serif;
   -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.35);
@@ -10729,21 +10744,21 @@ table.character-list-table .character-thumbnail {
   font-weight: normal;
   color: #FFFFFF;
 }
-/* line 316, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 327, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .panel .banner .label {
   margin: 6px 10px;
   font-size: 0.5em;
 }
-/* line 328, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 339, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .panel .banner small {
   color: #ffffff;
 }
-/* line 331, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 342, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .panel .banner.banner-success {
   background: #5cb85c;
 }
 
-/* line 336, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 347, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .character-thumbnail {
   overflow: hidden;
   display: inline-block;
@@ -10752,7 +10767,7 @@ table.character-list-table .character-thumbnail {
   border-radius: 42px;
 }
 
-/* line 341, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 352, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .info-circle {
   font-family: Dosis, Arial, sans-serif;
   background: #EEEEEE;
@@ -10771,7 +10786,7 @@ table.character-list-table .character-thumbnail {
   box-shadow: 5px 5px 40px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* line 356, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 367, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 #footer {
   background: #071e29;
   margin-top: 80px;
@@ -10783,40 +10798,40 @@ table.character-list-table .character-thumbnail {
   left: 0;
   padding-top: 20px;
 }
-/* line 366, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 377, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 #footer strong, #footer li {
   display: block;
   text-align: center;
 }
-/* line 370, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 381, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 #footer strong {
   padding-bottom: 10px;
   border-bottom: 1px solid #0e3e55;
   margin-bottom: 10px;
 }
-/* line 375, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 386, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 #footer ul {
   padding: 0;
   list-style: none;
 }
-/* line 379, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 390, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 #footer ul a {
   padding: 5px 10px;
   display: block;
 }
 
-/* line 386, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 397, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 #loginbtn {
   margin: 20px 0;
   float: right;
 }
 
-/* line 391, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 402, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .static-height {
   min-height: 240px;
 }
 
-/* line 394, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 405, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .group {
   text-align: center;
   background: #1d7eac;
@@ -10828,32 +10843,32 @@ table.character-list-table .character-thumbnail {
   -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
-/* line 403, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 414, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .group:hover {
   -webkit-box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
 }
-/* line 407, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 418, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .group p {
   margin: 0;
 }
-/* line 410, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 421, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .group a.grouplink {
   color: #FFFFFF;
 }
-/* line 412, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 423, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .group a.grouplink:hover {
   color: #FFFFFF;
   text-decoration: none;
 }
-/* line 417, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 428, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .group h1 {
   margin: 0;
   border-bottom: 1px solid #165e80;
   text-align: center;
   position: relative;
 }
-/* line 422, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 433, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .group h1 small {
   color: #13516f;
   font-size: 14px;
@@ -10861,40 +10876,40 @@ table.character-list-table .character-thumbnail {
   right: 10px;
   top: 5px;
 }
-/* line 428, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 439, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .group h1 small .icon {
   font-size: 18px;
   margin-top: 3px;
 }
-/* line 434, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 445, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .group .count {
   font-size: 1.4em;
 }
-/* line 437, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 448, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .group .role {
   display: inline-block;
   padding: 5px 10px;
   margin-right: 5px;
   line-height: 30px;
 }
-/* line 443, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 454, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .group img {
   vertical-align: middle;
 }
 
-/* line 450, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 461, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .group-events {
   margin-bottom: 10px;
   background: #165e80;
   color: #FFFFFF;
   position: relative;
 }
-/* line 456, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 467, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .group-events .event {
   padding: 10px;
   border-bottom: 1px solid #0e3e55;
 }
-/* line 459, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 470, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .group-events .event .date {
   color: #f48920;
   margin-right: 20px;
@@ -10952,14 +10967,14 @@ table.character-list-table .character-thumbnail {
     background-position: top right;
   }
 }
-/* line 493, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 504, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .notification {
   padding: 10px 35px;
   text-align: center;
   margin-bottom: 10px;
   position: relative;
 }
-/* line 499, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 510, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .notification .notification-close {
   color: #ffffff;
   float: right;
@@ -10967,22 +10982,22 @@ table.character-list-table .character-thumbnail {
   right: 15px;
   top: 10px;
 }
-/* line 507, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 518, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .notification.notification-danger {
   color: #FFFFFF;
   background: #d9534f;
 }
-/* line 512, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 523, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .notification.notification-info {
   color: #FFFFFF;
   background: #1d7eac;
 }
-/* line 516, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 527, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .notification.notification-success {
   color: #FFFFFF;
   background: #5cb85c;
 }
-/* line 520, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 531, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .notification.notification-rainbow {
   background-image: -webkit-linear-gradient(left, red, orange, yellow, green, blue, indigo, violet, indigo, blue, green, yellow, orange, red);
   background-image: -moz-linear-gradient(left, red, orange, yellow, green, blue, indigo, violet, indigo, blue, green, yellow, orange, red);
@@ -11003,16 +11018,16 @@ table.character-list-table .character-thumbnail {
   position: absolute;
   width: 400px;
 }
-/* line 541, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 552, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .notification ul {
   text-align: left;
 }
-/* line 544, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 555, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .notification.with-icon {
   padding-left: 80px;
   position: relative;
 }
-/* line 547, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 558, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .notification.with-icon .notification-icon {
   font-size: 2.6em;
   position: absolute;
@@ -11020,123 +11035,123 @@ table.character-list-table .character-thumbnail {
   left: 20px;
 }
 
-/* line 557, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 568, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .no-text-break {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
 
-/* line 563, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 574, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .quality-1 {
   color: #333333;
 }
 
-/* line 566, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 577, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .quality-2 {
   color: #18cc00;
 }
 
-/* line 569, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 580, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .quality-3 {
   color: #0070ff;
 }
 
-/* line 572, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 583, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .quality-4 {
   color: #b048f8;
 }
 
-/* line 575, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 586, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .quality-7, .quality-6 {
   color: #c19926;
 }
 
-/* line 580, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 591, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .dropdown-toggle:active, .dropdown-toggle:focus, .dropdown-toggle:visited, .dropdown-toggle:hover {
   text-decoration: none;
 }
 
-/* line 584, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 595, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .dropdown-icon {
   margin: 0 10px 0 -10px;
 }
 
-/* line 587, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 598, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .muted {
   color: #777777;
 }
 
-/* line 591, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 602, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .event-date {
   text-align: center;
   color: #FFFFFF;
 }
-/* line 594, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 605, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .event-date .day, .event-date .month, .event-date .weekday {
   padding: 2px 10px;
 }
-/* line 597, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 608, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .event-date .day {
   background: #165e80;
   font-size: 1.8em;
   padding-bottom: 0;
 }
-/* line 602, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 613, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .event-date .month {
   background: #165e80;
 }
-/* line 605, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 616, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .event-date .weekday {
   background: #f48920;
   padding: 4px 10px;
   text-shadow: 1px 1px 1px #000;
 }
 
-/* line 612, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 623, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .tooltip {
   min-width: 100px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 616, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 627, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .tooltip .content {
   min-width: 100px;
 }
 
-/* line 621, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 632, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .event .tooltip {
   min-width: 200px;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 626, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+  /* line 637, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
   #footer {
     position: relative;
   }
 
-  /* line 629, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+  /* line 640, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
   #page {
     padding-bottom: 0;
   }
 
-  /* line 632, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+  /* line 643, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
   #loginbtn {
     float: none;
     margin: 10px 0;
   }
 
-  /* line 636, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+  /* line 647, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
   #logo {
     margin: 10px auto;
   }
 }
-/* line 642, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 653, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .circliful {
   position: relative;
 }
 
-/* line 646, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 657, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .circle-text, .circle-info, .circle-text-half, .circle-info-half {
   width: 100%;
   position: absolute;
@@ -11146,58 +11161,53 @@ table.character-list-table .character-thumbnail {
   line-height: 24px;
 }
 
-/* line 654, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 665, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .circle-text-half, .circle-info-half {
   top: 0;
 }
 
-/* line 658, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 669, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .circle-info, .circle-info-half {
   color: #999;
   font-size: 0.8em;
 }
 
-/* line 663, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 674, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .circliful .fa {
   margin: -10px 3px 0 3px;
   position: relative;
   bottom: 4px;
 }
 
-/* line 669, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 680, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .event-calendar td {
   background: #ffffff;
 }
 
-/* line 675, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 686, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .table td {
   background: #ffffff;
 }
 
-/* line 679, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 690, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .content-box {
   background: #ffffff;
   padding: 10px;
   border: 1px solid #ccc;
 }
 
-/* line 684, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 695, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .popover {
   min-width: 250px;
 }
 @media (max-width: 768px) {
-  /* line 684, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+  /* line 695, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
   .popover {
     display: none !important;
   }
 }
 
-/* line 691, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
-.data-tooltip {
-  display: block;
-}
-
-/* line 694, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 703, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .currency-img {
   width: 10px;
   height: 10px;
@@ -11207,104 +11217,104 @@ table.character-list-table .character-thumbnail {
   border-radius: 5px;
   overflow: hidden;
 }
-/* line 700, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 709, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .currency-img.gold {
   background: #FFDD03;
 }
-/* line 703, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 712, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .currency-img.copper {
   background: #AD6C17;
 }
-/* line 706, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 715, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .currency-img.silver {
   background: #B4C5CC;
 }
 
-/* line 712, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 721, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .popover.right .tooltip-image {
   right: -90px;
   position: absolute;
   top: -10px;
 }
-/* line 719, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 728, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .popover.left .tooltip-image {
   left: -90px;
   position: absolute;
   top: -10px;
 }
 
-/* line 726, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 735, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .item-box {
   position: relative;
 }
-/* line 728, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 737, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .item-box p {
   margin: 0;
 }
-/* line 730, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 739, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .item-box p.spacing {
   margin-top: 10px;
 }
-/* line 734, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 743, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .item-box .item-title {
   font-size: 1.2em;
   display: block;
 }
-/* line 738, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 747, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .item-box ul {
   padding: 0;
   list-style: none;
 }
-/* line 741, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 750, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .item-box ul li {
   color: #999999;
 }
-/* line 743, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 752, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .item-box ul li.active {
   color: #5cb85c;
 }
-/* line 748, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 757, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .item-box ul.statlist li {
   color: #333333;
 }
-/* line 750, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 759, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .item-box ul.statlist li.active {
   color: #5cb85c;
 }
-/* line 756, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 765, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .item-box .ilevel {
   color: #997d00;
 }
-/* line 759, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 768, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .item-box .description {
   color: #997d00;
 }
-/* line 762, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 771, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .item-box .description-00ff00 {
   color: #5cb85c;
 }
 
-/* line 766, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 775, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .item-quality-2 {
   color: #18cc00;
 }
 
-/* line 769, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 778, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .item-quality-3 {
   color: #0070ff;
 }
 
-/* line 772, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 781, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .item-quality-4 {
   color: #b048f8;
 }
 
-/* line 775, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 784, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .item-quality-7, .item-quality-6 {
   color: #c19926;
 }
 
-/* line 778, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 787, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .item-quality-2-image, .item-quality-3-image, .item-quality-4-image, .item-quality-7-image, .item-quality-6-image {
   border: 2px solid #ffffff;
   -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
@@ -11315,77 +11325,77 @@ table.character-list-table .character-thumbnail {
   border-radius: 3px;
 }
 
-/* line 784, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 793, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .item-quality-2-image {
   border-color: #18cc00;
 }
 
-/* line 787, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 796, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .item-quality-3-image {
   border-color: #0070ff;
 }
 
-/* line 790, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 799, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .item-quality-4-image {
   border-color: #b048f8;
 }
 
-/* line 793, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 802, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .item-quality-7-image, .item-quality-6-image {
   border-color: #c19926;
 }
 
-/* line 797, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 806, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 table.table-itembuild {
   border: 1px solid #ddd;
   background: #ffffff;
 }
-/* line 800, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 809, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 table.table-itembuild .item-round {
   overflow: hidden;
   width: 48px;
 }
-/* line 804, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 813, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 table.table-itembuild .item-round.quality-2, table.table-itembuild .item-round.quality-3, table.table-itembuild .item-round.quality-4, table.table-itembuild .item-round.quality-7, table.table-itembuild .item-round.quality-6 {
   border: 2px solid #ffffff;
   -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
 }
-/* line 808, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 817, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 table.table-itembuild .item-round.quality-2 {
   border-color: #18cc00;
 }
-/* line 811, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 820, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 table.table-itembuild .item-round.quality-3 {
   border-color: #0070ff;
 }
-/* line 814, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 823, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 table.table-itembuild .item-round.quality-4 {
   border-color: #b048f8;
 }
-/* line 817, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 826, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 table.table-itembuild .item-round.quality-7, table.table-itembuild .item-round.quality-6 {
   border-color: #c19926;
 }
-/* line 822, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 831, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 table.table-itembuild .item-placeholder {
   background: #ddd;
   width: 48px;
   height: 48px;
 }
 @media screen and (max-width: 768px) {
-  /* line 828, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+  /* line 837, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
   table.table-itembuild tr {
     min-height: 120px;
   }
-  /* line 831, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+  /* line 840, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
   table.table-itembuild > tbody > tr {
     position: relative;
     background: none !important;
     display: block;
     width: auto;
   }
-  /* line 836, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+  /* line 845, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
   table.table-itembuild > tbody > tr > td {
     display: block;
     width: auto;
@@ -11395,7 +11405,7 @@ table.table-itembuild .item-placeholder {
     border-width: 1px 0 0 0 !important;
     min-height: 60px;
   }
-  /* line 844, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+  /* line 853, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
   table.table-itembuild > tbody > tr > td.itemframe {
     min-height: 48px;
     border: 0 !important;
@@ -11404,156 +11414,156 @@ table.table-itembuild .item-placeholder {
     left: 0;
     top: 0;
   }
-  /* line 851, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+  /* line 860, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
   table.table-itembuild > tbody > tr > td.itemframe.right {
     top: 60px;
   }
 }
-/* line 860, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 869, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 table.table-itembuild td a:hover {
   text-decoration: none;
 }
-/* line 864, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 873, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 table.table-itembuild td.iteminfo-right, table.table-itembuild td.iteminfo-left {
   line-height: 16px;
 }
-/* line 867, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 876, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 table.table-itembuild td.iteminfo-right {
   border-left: 1px solid #ddd;
 }
-/* line 870, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 879, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 table.table-itembuild td.iteminfo-left {
   border-right: 1px solid #ddd;
 }
-/* line 873, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 882, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 table.table-itembuild td.itemframe {
   padding: 10px 20px;
 }
 
-/* line 878, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 887, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-1, .class-2, .class-3, .class-4, .class-5, .class-6, .class-7, .class-8, .class-9, .class-10, .class-11 {
   color: #ffffff;
 }
-/* line 880, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 889, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-1 a, .class-2 a, .class-3 a, .class-4 a, .class-5 a, .class-6 a, .class-7 a, .class-8 a, .class-9 a, .class-10 a, .class-11 a {
   color: #ffffff;
 }
 
-/* line 885, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 894, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-1 {
   background-color: #C79C6E !important;
 }
 
-/* line 888, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 897, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-2 {
   background-color: #F58CBA !important;
 }
 
-/* line 891, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 900, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-3 {
   background-color: #ABD473 !important;
 }
 
-/* line 894, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 903, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-4 {
   background-color: #FFF569 !important;
   color: #333333;
 }
 
-/* line 898, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 907, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-5 {
   background-color: #FFFFFF !important;
   color: #333333;
 }
 
-/* line 902, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 911, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-6 {
   background-color: #C41F3B !important;
 }
 
-/* line 905, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 914, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-7 {
   background-color: #0070DE !important;
 }
 
-/* line 908, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 917, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-8 {
   background-color: #69CCF0 !important;
 }
 
-/* line 911, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 920, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-9 {
   background-color: #9482C9 !important;
 }
 
-/* line 914, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 923, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-10 {
   background-color: #00FF96 !important;
 }
 
-/* line 917, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 926, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-11 {
   background-color: #FF7D0A !important;
 }
 
-/* line 921, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 930, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-1-border, .class-2-border, .class-3-border, .class-4-border, .class-5-border, .class-6-border, .class-7-border, .class-8-border, .class-9-border, .class-10-border, .class-11-border {
   border: 1px solid #ffffff;
   -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
 }
 
-/* line 926, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 935, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-1-border {
   border-color: #C79C6E !important;
 }
 
-/* line 929, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 938, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-2-border {
   border-color: #F58CBA !important;
 }
 
-/* line 932, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 941, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-3-border {
   border-color: #ABD473 !important;
 }
 
-/* line 935, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 944, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-4-border {
   border-color: #FFF569 !important;
 }
 
-/* line 938, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 947, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-5-border {
   border-color: #FFFFFF !important;
 }
 
-/* line 941, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 950, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-6-border {
   border-color: #C41F3B !important;
 }
 
-/* line 944, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 953, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-7-border {
   border-color: #0070DE !important;
 }
 
-/* line 947, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 956, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-8-border {
   border-color: #69CCF0 !important;
 }
 
-/* line 950, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 959, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-9-border {
   border-color: #9482C9 !important;
 }
 
-/* line 953, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 962, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-10-border {
   border-color: #00FF96 !important;
 }
 
-/* line 956, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
+/* line 965, ../../src/XRealm/AppBundle/Resources/sass/includes/_base.scss */
 .class-11-border {
   border-color: #FF7D0A !important;
 }

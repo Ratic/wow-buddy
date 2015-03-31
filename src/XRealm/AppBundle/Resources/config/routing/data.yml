@@ -6,3 +6,8 @@ data_item_show_context:
     path: /item/{id}/{context}
     defaults: { _controller: XRealmAppBundle:Data/Item:show }
     methods:  [GET]
+    
+data_character_show:
+    path: /character/{identifier}
+    defaults: { _controller: XRealmAppBundle:Data/Character:show }
+    methods:  [GET]

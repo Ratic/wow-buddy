@@ -98,7 +98,7 @@ class CharacterController extends BaseController
         $charLoader->setEntityManager($this->getDoctrine()->getManager());
         $charLoader->update();
 
-        return $this->redirect($this->generateUrl('profile_user_show', array(
+        return $this->redirect($this->generateUrl('data_character_show', array(
             'identifier'    => $character->getName() . '-' . $character->getRealm()->getSlug(),
         )));
     }

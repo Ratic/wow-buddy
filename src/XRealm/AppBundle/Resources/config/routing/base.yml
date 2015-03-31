@@ -39,8 +39,3 @@ supportus:
 test:
     path: /test
     defaults: { _controller: XRealmAppBundle:Misc:test }
-
-profile_user_show:
-    path: /character/{identifier}/info
-    defaults: { _controller: XRealmAppBundle:Profile/User:show }
-    methods:  [GET]

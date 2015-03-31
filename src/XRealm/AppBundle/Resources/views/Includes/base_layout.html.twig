@@ -82,39 +82,43 @@
 
             $.fn.bootstrapSwitch.defaults.size = 'small';
             $(document).ready(function() {
-                $('.data-tooltip').each(function(){
-                    var e= $(this);
-                    var timeout;
-                    $(this).hover(function(){
-                        timeout = setTimeout(function(){
-                            $(this).stop();
-                            $(this).unbind('hover');
-                            $(this).unbind('mouseenter mouseleave');
-                            $.get(e.data('ajaxload'),function(d){
-                                var content = d;
-                                e.popover({
-                                    trigger: 'manual',
-                                    content: d,
-                                    html: true,
-                                    title: false
-                                }).popover('show');
-                                bindPopoverTrigger(e);
+                
+                    $('.data-tooltip').each(function(){
+                        var e= $(this);
+                        var timeout;
+                        $(this).hover(function(){
+                            if ($(window).width() > 768) {
+                                timeout = setTimeout(function(){
+                                    $(this).stop();
+                                    $(this).unbind('hover');
+                                    $(this).unbind('mouseenter mouseleave');
+                                    $.get(e.data('ajaxload'),function(d){
+                                        var content = d;
+                                        e.popover({
+                                            trigger: 'manual',
+                                            content: d,
+                                            html: true,
+                                            title: false
+                                        }).popover('show');
+                                        bindPopoverTrigger(e);
 
-                            }).fail(function() {
-                                 e.popover({
-                                    trigger: 'manual',
-                                    content: '<i class="icon icon-exclamation-circle"></i> {{ "error.item_notloadable"|trans }}',
-                                    html: true,
-                                    title: false
-                                }).popover('show');
-                                bindPopoverTrigger(e);
-                            });
-                        }, 400);
-                    }, function() {
-                        clearTimeout(timeout);
+                                    }).fail(function() {
+                                         e.popover({
+                                            trigger: 'manual',
+                                            content: '<i class="icon icon-exclamation-circle"></i> {{ "error.item_notloadable"|trans }}',
+                                            html: true,
+                                            title: false
+                                        }).popover('show');
+                                        bindPopoverTrigger(e);
+                                    });
+                                }, 400);
+                            }
+                        }, function() {
+                            clearTimeout(timeout);
+                        });
                     });
+                
 
-                });
                 function bindPopoverTrigger(e)
                 {
                     var timeout;

@@ -10,13 +10,13 @@
                 <ul class="user-nav">
                     {% if app_user_characters.selected %}
                     <li>
-                        <a href="{{ path("profile_user_show", {'identifier': app_user_characters.selected.data.name ~ '-' ~ app_user_characters.selected.data.realm.slug}) }}">
+                        <a href="{{ path("data_character_show", {'identifier': app_user_characters.selected.data.name ~ '-' ~ app_user_characters.selected.data.realm.slug}) }}">
                             <i class="icon icon-user"></i>
                             {{ "nav.profile"|trans }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path("profile_user_show", {'identifier': app_user_characters.selected.data.name ~ '-' ~ app_user_characters.selected.data.realm.slug}) }}">
+                        <a href="{{ path("data_character_show", {'identifier': app_user_characters.selected.data.name ~ '-' ~ app_user_characters.selected.data.realm.slug}) }}">
                             <i class="icon icon-gift"></i>
                             {{ "nav.wishlist"|trans }}
                         </a>
@@ -49,14 +49,14 @@
                         <div class="row">
                             <div class="col-xs-2">
                                 <div class="character-thumbnail">
-                                    <a href="{{ path("profile_user_show", {'identifier': app_user_characters.selected.data.name ~ '-' ~ app_user_characters.selected.data.realm.slug}) }}">
+                                    <a href="{{ path("data_character_show", {'identifier': app_user_characters.selected.data.name ~ '-' ~ app_user_characters.selected.data.realm.slug}) }}">
                                         <img width="36"src="{{ app_user_characters.selected.data.thumbnail|cacheimage }}" />
                                     </a>
                                 </div>
                             </div>
                             <div class="col-xs-10">
                                 <div class="no-text-break">
-                                    <a class="amorylink" href="{{ path("profile_user_show", {'identifier': app_user_characters.selected.data.name ~ '-' ~ app_user_characters.selected.data.realm.slug}) }}">
+                                    <a class="amorylink" href="{{ path("data_character_show", {'identifier': app_user_characters.selected.data.name ~ '-' ~ app_user_characters.selected.data.realm.slug}) }}">
                                     {{ app_user_characters.selected.data.name }}
                                     </a>
                                     -

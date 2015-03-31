@@ -1,9 +1,111 @@
 {% extends "XRealmAppBundle:Includes:base_layout.html.twig" %}
+{% import "XRealmAppBundle:Includes:macro_tooltip.html.twig" as tooltipbuilder %}
 
 {% block title %}
-    {{ item.name }} - 
+    {{ item.getName(app.request.locale) }} -
 {% endblock title %}
 
+{% block scripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var bgpos = 0;
+
+            setInterval(function(){
+                if($('.model-viewer:hover').length)
+                {
+                    bgpos += 280;
+                }
+
+
+                if(bgpos >= 280 * 24)
+                {
+                    bgpos = 0;
+                }
+                $('.model-viewer:hover').css({
+                    'background-position': '' + -bgpos + 'px 0',
+                });
+            }, 100);
+
+        });
+    </script>
+{% endblock scripts %}
+
 {% block content %}
-    {% include "XRealmAppBundle:Pages/Data:itemData.html.twig" %}
+    <div class="row">
+        <div class="col-sm-6">
+            {% include "XRealmAppBundle:Pages/Data:itemData.html.twig" %}
+        </div>
+        <div class="col-sm-6">
+            <!--div class="item-model-view">
+
+
+                <div xmlns="http://www.w3.org/1999/xhtml" class="model-viewer" style="background-image: url('{{ ("http://media.blizzard.com/wow/renders/items/item" ~ item.blizzId ~ ".jpg")|cacheimage }}');"></div>
+            </div-->
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-sm-12">
+            <ul class="nav nav-tabs" role="tablist">
+                {% if recentItems|length %}
+                <li role="presentation" class="active">
+                    <a href="#recentItems" aria-controls="base" role="tab" data-toggle="tab">{{ "website.recentitems"| trans }}</a>
+                </li>
+                {% endif %}
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                {% if recentItems|length %}
+                <div role="tabpanel" class="tab-pane active" id="recentItems">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Icon
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Gegenstandsstufe
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for recentItem in recentItems if recentItem.id != item.id %}
+                                <tr>
+                                    <td>
+                                        {% set content %}
+                                           <div class="item-round quality-{{ recentItem.quality }}">
+                                                <img width="16" src="{{ ("http://us.media.blizzard.com/wow/icons/56/" ~ recentItem.icon ~ ".jpg")|cacheimage }}" />
+                                            </div>
+                                        {% endset %}
+                                        {{ tooltipbuilder.item(recentItem, content, "right") }}
+                                    </td>
+                                    <td>
+                                        <div class="item">
+                                        {% set content %}
+                                            <span class="quality-{{ recentItem.quality }}">{{ recentItem.getName(app.request.locale) }}</span>
+                                       {% endset %}
+                                       {{ tooltipbuilder.item(recentItem, content, "right") }}
+                                       </div>
+                                    </td>
+                                    <td>
+                                        <div class="iteminfo">
+                                            <span class="text-success">{{ recentItem.itemLevel }}</span>{% if recentItem.context %}<small class="muted"> - {{ ("item-context." ~ recentItem.context)|trans }}</small>{% endif %}
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
 {% endblock content %}

@@ -20,4 +20,4 @@ x_realm_app_api:
 
 x_realm_app_data:
     resource: "@XRealmAppBundle/Resources/config/routing/data.yml"
-    prefix:   /data
+    prefix:   /

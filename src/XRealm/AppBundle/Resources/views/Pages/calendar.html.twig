@@ -118,7 +118,7 @@
           </div>
           <div class="muted col-sm-12">
               {{ "website.createdby"|trans }}:
-              <a class="amorylink" href="{{ path("profile_user_show", {'identifier': event.createdBy.name ~ '-' ~ event.createdBy.realm.slug}) }}">
+              <a class="amorylink" href="{{ path("data_character_show", {'identifier': event.createdBy.name ~ '-' ~ event.createdBy.realm.slug}) }}">
                   {{ event.createdBy.name }} - {{ event.createdBy.realm.name }}
               </a>
               in 

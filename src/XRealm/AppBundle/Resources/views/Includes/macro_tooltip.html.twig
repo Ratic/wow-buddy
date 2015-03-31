@@ -1,8 +1,13 @@
 {% macro item (data, content = false, placement = "right") %}
-    {% if data.context %}
-        {% set url = path("data_item_show_context", {"id": data.id, "context": data.context})%}
+    {% if data.blizzId is defined %}
+        {% set id = data.blizzId %}
     {% else %}
-        {% set url = path("data_item_show", {"id": data.id}) %}
+        {% set id = data.id %}
+    {% endif %}
+    {% if data.context %}
+        {% set url = path("data_item_show_context", {"id": id, "context": data.context})%}
+    {% else %}
+        {% set url = path("data_item_show", {"id": id}) %}
     {% endif %}
 <a class="data-tooltip" data-placement="{{ placement }}" href="{{ url }}" data-ajaxload="{{ url }}?tooltip=1">
 {% if content %}

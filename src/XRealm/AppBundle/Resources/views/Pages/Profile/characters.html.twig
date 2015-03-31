@@ -25,10 +25,10 @@
             {% for character in app.user.blizzCharacters %}
                 <tr>
                     <td>
-                        <a class="hidden-xs character-thumbnail amorylink" href="{{ path("profile_user_show", {'identifier': character.name ~ '-' ~ character.realm.slug}) }}">
+                        <a class="hidden-xs character-thumbnail amorylink" href="{{ path("data_character_show", {'identifier': character.name ~ '-' ~ character.realm.slug}) }}">
                             <img width="32" src="{{ character.thumbnail|cacheimage }}" />
                         </a>
-                        <a class="charclass" href="{{ path("profile_user_show", {'identifier': character.name ~ '-' ~ character.realm.slug}) }}">
+                        <a class="charclass" href="{{ path("data_character_show", {'identifier': character.name ~ '-' ~ character.realm.slug}) }}">
                            {{ character.name }}
                         </a>
                            <span class="label class-{{ character.class }}">
@@ -128,7 +128,7 @@
                 <h2 class="banner{% if character.isSelected %} banner-success{% endif %}">
                     
                     <a class="btn btn-info pull-right" target="_blank" href="http://eu.battle.net/wow/{{ app.request.locale }}/character/{{ character.realm.slug }}/{{ character.name }}/simple">{{ "website.amorylink"|trans }}</a>
-                    <a class="btn btn-info pull-right" style="margin-right: 10px" href="{{ path("profile_user_show", {'identifier': character.name ~ '-' ~ character.realm.slug}) }}">
+                    <a class="btn btn-info pull-right" style="margin-right: 10px" href="{{ path("data_character_show", {'identifier': character.name ~ '-' ~ character.realm.slug}) }}">
                         {{ "website.profile"|trans }}
                     </a>
                     

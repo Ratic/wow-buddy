@@ -66,7 +66,7 @@
                 {% endif %}
             </td>
             <td>
-                <a class="amorylink" href="{{ path("profile_user_show", {'identifier': member.character.name ~ '-' ~ member.character.realm.slug}) }}">
+                <a class="amorylink" href="{{ path("data_character_show", {'identifier': member.character.name ~ '-' ~ member.character.realm.slug}) }}">
                     {{ member.character.name }}
                 </a>
             </td>

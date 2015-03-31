@@ -14,11 +14,6 @@ class ItemRepository extends EntityRepository
         $qb = $this->createQueryBuilder('i');
         $qb->where('i.blizzId = :id');
         $qb->setParameter('id', $id);
-        if($context)
-        {
-            $qb->andWhere('i.context = :context');
-            $qb->setParameter('context', $context);
-        }
         $result = $qb->getQuery()->getResult();
         if(empty($result))
         {

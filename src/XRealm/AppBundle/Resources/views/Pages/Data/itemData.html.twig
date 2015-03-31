@@ -8,7 +8,7 @@
             </div>
         {% endif %}
         {% if not tooltip %}
-        <div class="{% if tooltip %}col-sm-3{% else %}col-lg-1 col-md-1 col-sm-2 col-xs-4{% endif %}">
+        <div class="{% if tooltip %}col-sm-3{% else %}col-lg-2 col-md-3 col-sm-4 col-xs-4{% endif %}">
             <div class="item-quality-{{ item.quality }}-image">
                 <img src="{{ ("http://us.media.blizzard.com/wow/icons/56/" ~ item.icon ~ ".jpg")|cacheimage }}" />
             </div>
@@ -21,7 +21,7 @@
                 <img src="{{ ("http://us.media.blizzard.com/wow/icons/56/" ~ item.icon ~ ".jpg")|cacheimage }}" />
             </div>
         {% endif %}
-        <div class="{% if tooltip %}col-sm-12{% else %}col-sm-5 col-lg-4 col-xs-12 content-box{% endif %}">
+        <div class="{% if tooltip %}col-sm-12{% else %}col-sm-8 col-md-9 col-lg-10 col-xs-12 content-box{% endif %}">
             {% if tooltip %}
                 <div class="item-quality-{{ item.quality }}">
                     <strong class="item-title">{{ item.getName(app.request.locale) }}</strong>
@@ -51,7 +51,13 @@
                     {{ "data.bop"|trans }}
                 {% endif %}
             </p>
-            {{ ("data.inventorytype." ~ item.inventoryType)|trans }}
+            
+            {% if item.inventoryType and item.inventoryType != "ammo" %}
+                <p>
+                    {{ ("data.inventorytype." ~ item.inventoryType)|trans }}
+                </p>
+            {% endif %}
+            
             {% if item.armor %}
                 <p>
                     <ul class="statlist">
